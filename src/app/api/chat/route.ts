@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     const vertexAI = getVertexAI()
     const model = vertexAI.getGenerativeModel({
-      model: 'gemini-2.5-flash-preview-05-20',
+      model: 'gemini-2.5-flash',
     })
 
     // Build conversation history
