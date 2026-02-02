@@ -63,17 +63,51 @@
   "register": {
     "title": "求職者登録",
     "subtitle": "あなたの情報を入力してください",
+    "step1": "基本情報",
+    "step2": "在留・スキル",
+    "step3": "連絡先",
     "form": {
       "name": "お名前",
       "namePlaceholder": "例: NGUYEN VAN ANH",
+      "birthDate": "生年月日",
+      "birthDatePlaceholder": "例: 1995-01-15",
+      "gender": "性別",
+      "genderPlaceholder": "選択してください",
       "nationality": "国籍",
       "nationalityPlaceholder": "選択してください",
       "residenceStatus": "在留資格",
       "residenceStatusPlaceholder": "選択してください",
+      "residenceExpiry": "在留期限",
+      "residenceExpiryPlaceholder": "例: 2026-03-31",
       "yearsInJapan": "日本在住年数",
       "yearsInJapanPlaceholder": "例: 3",
+      "japaneseLevel": "日本語能力",
+      "japaneseLevelPlaceholder": "選択してください",
+      "desiredJob": "希望職種",
+      "desiredJobPlaceholder": "選択してください",
       "contact": "連絡先（LINE ID推奨）",
       "contactPlaceholder": "例: your_line_id"
+    },
+    "genders": {
+      "MALE": "男性",
+      "FEMALE": "女性",
+      "OTHER": "その他"
+    },
+    "japaneseLevels": {
+      "N1": "N1（ビジネスレベル）",
+      "N2": "N2（日常会話上級）",
+      "N3": "N3（日常会話中級）",
+      "N4": "N4（基本的な日常会話）",
+      "N5": "N5（基礎レベル）",
+      "JFT_A2": "JFT-Basic A2以上",
+      "STUDYING": "勉強中",
+      "NONE": "未学習"
+    },
+    "desiredJobs": {
+      "CARE_WORKER": "介護職",
+      "CARE_SUPPORT": "介護補助",
+      "NURSING_ASSISTANT": "看護助手",
+      "OTHER": "その他"
     },
     "nationalities": {
       "ID": "インドネシア",

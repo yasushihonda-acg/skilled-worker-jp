@@ -63,17 +63,51 @@
   "register": {
     "title": "အလုပ်ရှာဖွေသူစာရင်းသွင်းခြင်း",
     "subtitle": "ကျေးဇူးပြု၍ သင့်အချက်အလက်များကို ထည့်သွင်းပါ",
+    "step1": "အခြေခံအချက်အလက်",
+    "step2": "နေထိုင်ခွင့်နှင့်ကျွမ်းကျင်မှု",
+    "step3": "ဆက်သွယ်ရန်",
     "form": {
       "name": "အမည်အပြည့်အစုံ",
       "namePlaceholder": "ဥပမာ - NGUYEN VAN ANH",
+      "birthDate": "မွေးသက္ကရာဇ်",
+      "birthDatePlaceholder": "ဥပမာ - 1995-01-15",
+      "gender": "ကျား/မ",
+      "genderPlaceholder": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ",
       "nationality": "နိုင်ငံသား",
       "nationalityPlaceholder": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ",
       "residenceStatus": "နေထိုင်ခွင့်အခြေအနေ",
       "residenceStatusPlaceholder": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ",
+      "residenceExpiry": "နေထိုင်ခွင့်သက်တမ်းကုန်ဆုံးရက်",
+      "residenceExpiryPlaceholder": "ဥပမာ - 2026-03-31",
       "yearsInJapan": "ဂျပန်တွင်နေထိုင်သည့်နှစ်",
       "yearsInJapanPlaceholder": "ဥပမာ - 3",
+      "japaneseLevel": "ဂျပန်စာအရည်အချင်း",
+      "japaneseLevelPlaceholder": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ",
+      "desiredJob": "လိုချင်သောအလုပ်",
+      "desiredJobPlaceholder": "ကျေးဇူးပြု၍ ရွေးချယ်ပါ",
       "contact": "ဆက်သွယ်ရန် (LINE ID ဦးစားပေး)",
       "contactPlaceholder": "ဥပမာ - your_line_id"
+    },
+    "genders": {
+      "MALE": "အမျိုးသား",
+      "FEMALE": "အမျိုးသမီး",
+      "OTHER": "အခြား"
+    },
+    "japaneseLevels": {
+      "N1": "N1 (စီးပွားရေးအဆင့်)",
+      "N2": "N2 (အဆင့်မြင့်နေ့စဉ်စကားပြော)",
+      "N3": "N3 (အလယ်အလတ်နေ့စဉ်စကားပြော)",
+      "N4": "N4 (အခြေခံနေ့စဉ်စကားပြော)",
+      "N5": "N5 (အစပြုအဆင့်)",
+      "JFT_A2": "JFT-Basic A2 သို့မဟုတ်အထက်",
+      "STUDYING": "လေ့လာနေဆဲ",
+      "NONE": "မလေ့လာရသေး"
+    },
+    "desiredJobs": {
+      "CARE_WORKER": "စောင့်ရှောက်ရေးအလုပ်သမား",
+      "CARE_SUPPORT": "စောင့်ရှောက်ရေးအထောက်အကူ",
+      "NURSING_ASSISTANT": "သူနာပြုလက်ထောက်",
+      "OTHER": "အခြား"
     },
     "nationalities": {
       "ID": "အင်ဒိုနီးရှား",
