@@ -44,6 +44,8 @@ steps:
       - '10'
       - '--set-env-vars'
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,VERTEX_AI_LOCATION=asia-northeast1'
+      - '--service-account'
+      - 'skilled-worker-app@$PROJECT_ID.iam.gserviceaccount.com'
 
 images:
   - 'asia-northeast1-docker.pkg.dev/$PROJECT_ID/skilled-worker-jp/app:$COMMIT_SHA'
