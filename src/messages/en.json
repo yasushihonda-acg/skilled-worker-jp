@@ -139,7 +139,13 @@
     "title": "Chat Support",
     "placeholder": "Type your message...",
     "send": "Send",
-    "welcome": "Hello! How can I help you today?",
-    "preparing": "Currently under preparation. Please wait."
+    "welcome": "Hello! I can answer questions about Specified Skilled Worker visas. Choose from the buttons below or ask freely.",
+    "preparing": "Currently under preparation. Please wait.",
+    "suggestions": {
+      "ssw": "What is SSW visa?",
+      "jobs": "What jobs are available?",
+      "procedure": "How to apply?",
+      "support": "What support is offered?"
+    }
   }
 }

@@ -139,7 +139,13 @@
     "title": "Dukungan Chat",
     "placeholder": "Ketik pesan Anda...",
     "send": "Kirim",
-    "welcome": "Halo! Ada yang bisa saya bantu?",
-    "preparing": "Sedang dalam persiapan. Mohon tunggu."
+    "welcome": "Halo! Saya bisa menjawab pertanyaan tentang visa Tokutei Ginou. Pilih dari tombol di bawah atau tanyakan langsung.",
+    "preparing": "Sedang dalam persiapan. Mohon tunggu.",
+    "suggestions": {
+      "ssw": "Apa itu Tokutei Ginou?",
+      "jobs": "Pekerjaan apa saja?",
+      "procedure": "Bagaimana caranya?",
+      "support": "Dukungan apa saja?"
+    }
   }
 }
