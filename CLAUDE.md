@@ -58,11 +58,19 @@ npm run lint     # Lint実行
 npm run type-check  # 型チェック
 ```
 
+## 環境情報
+
+| 項目 | 値 | 備考 |
+|------|-----|------|
+| GitHub | yasushihonda-acg | |
+| GCP Account | hy.unimail.11@gmail.com | 暫定 |
+| GCP Project | skilled-worker-jp | 未作成 |
+
 ## 環境変数（.env.local）
 
 ```
 # GCP
-GOOGLE_CLOUD_PROJECT=
+GOOGLE_CLOUD_PROJECT=skilled-worker-jp
 GOOGLE_APPLICATION_CREDENTIALS=
 
 # Vertex AI
