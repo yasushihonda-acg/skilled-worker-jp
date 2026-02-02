@@ -20,12 +20,47 @@
   },
   "home": {
     "hero": {
-      "title": "Mulai Karir Baru Anda di Jepang",
-      "subtitle": "Layanan dukungan pekerjaan untuk Pekerja Terampil Khusus",
-      "cta": "Daftar Sekarang (Gratis)"
+      "title": "Bekerja di Jepang sebagai Pekerja Perawatan",
+      "subtitle": "Layanan dukungan pekerjaan untuk Pekerja Terampil Khusus, dikelola oleh Organisasi Pendukung Terdaftar",
+      "cta": "Daftar Sekarang (Gratis)",
+      "badge": "Sedang Merekrut",
+      "salary": "/bulan〜",
+      "cost": "biaya",
+      "trust1": "Pendaftaran gratis",
+      "trust2": "Dukungan bahasa ibu",
+      "trust3": "Dukungan visa",
+      "hired": "penempatan sukses",
+      "miniReview": "Dapat kerja dalam 2 minggu!"
+    },
+    "socialProof": {
+      "title": "Banyak orang sudah berhasil mendapat kerja",
+      "subtitle": "Pekerja dari negara Anda sedang berkembang di Jepang",
+      "stat1": "Penempatan sukses",
+      "stat2": "Tingkat retensi",
+      "stat3": "Rata-rata waktu dapat kerja",
+      "stat4": "Negara didukung",
+      "weeks": " minggu",
+      "countries": "",
+      "monthlySalary": "Gaji bulanan",
+      "testimonial1": {
+        "name": "Adi",
+        "role": "Pekerja Perawatan (Kagoshima)",
+        "quote": "Saya merasa aman karena bisa berkonsultasi dalam bahasa ibu. Mereka mendukung semua prosedur visa."
+      },
+      "testimonial2": {
+        "name": "Sunita",
+        "role": "Pekerja Perawatan (Fukuoka)",
+        "quote": "Bahasa Jepang saya belum sempurna, tapi semua orang baik dan saya menikmati bekerja setiap hari."
+      },
+      "testimonial3": {
+        "name": "Min",
+        "role": "Pekerja Perawatan (Kagoshima)",
+        "quote": "Gajinya bagus dan mereka membantu saya menemukan tempat tinggal. Saya senang bisa mengirim uang ke keluarga."
+      }
     },
     "features": {
       "title": "Mengapa Memilih Kami",
+      "subtitle": "Kami sepenuhnya mendukung pekerja asing seperti Anda",
       "feature1": {
         "title": "Spesialis Perawatan",
         "description": "Pekerjaan fokus pada perawatan dengan staf pendukung berpengalaman"
@@ -39,10 +74,26 @@
         "description": "Dukungan komprehensif dari prosedur visa hingga pasca-pekerjaan"
       }
     },
-    "cta": {
-      "title": "Mulai dengan Pendaftaran",
-      "description": "Selesaikan pendaftaran dalam 5 langkah mudah. Sepenuhnya gratis.",
-      "button": "Ke Pendaftaran"
+    "howItWorks": {
+      "title": "Dari Pendaftaran ke Pekerjaan",
+      "subtitle": "Mulai karir baru Anda dalam 4 langkah sederhana",
+      "step1": {
+        "title": "Pendaftaran Gratis",
+        "description": "Hanya 3 menit. Masukkan info dasar"
+      },
+      "step2": {
+        "title": "Wawancara",
+        "description": "Kami mendengar kebutuhan Anda dalam bahasa Anda"
+      },
+      "step3": {
+        "title": "Pengenalan Kerja",
+        "description": "Kami mencari pekerjaan yang cocok untuk Anda"
+      },
+      "step4": {
+        "title": "Dapat Kerja",
+        "description": "Dengan dukungan visa"
+      },
+      "cta": "Mulai Pendaftaran Gratis"
     },
     "about": {
       "title": "Tentang Aozora Care Group",
@@ -65,8 +116,14 @@
       },
       "learnMore": "Kunjungi Situs Perusahaan"
     },
+    "cta": {
+      "title": "Mulai dengan Pendaftaran",
+      "description": "Selesaikan pendaftaran dalam 5 langkah mudah. Sepenuhnya gratis.",
+      "button": "Ke Pendaftaran"
+    },
     "faq": {
       "title": "FAQ",
+      "subtitle": "Anda juga bisa bertanya via chat",
       "q1": {
         "question": "Apakah pendaftaran gratis?",
         "answer": "Ya, semuanya dari pendaftaran hingga pekerjaan gratis."
@@ -78,7 +135,21 @@
       "q3": {
         "question": "Pekerjaan apa yang tersedia?",
         "answer": "Saat ini, kami terutama menangani posisi perawatan."
+      },
+      "q4": {
+        "question": "Apakah Anda membantu prosedur visa?",
+        "answer": "Ya, sebagai Organisasi Pendukung Terdaftar, kami mendukung penuh aplikasi dan perpanjangan visa."
+      },
+      "q5": {
+        "question": "Apakah Anda membantu mencari tempat tinggal?",
+        "answer": "Ya, kami menyediakan dukungan pencarian tempat tinggal. Anda bisa memulai hidup di Jepang dengan tenang."
       }
+    },
+    "finalCta": {
+      "title": "Mulai Karir Baru Anda Hari Ini",
+      "description": "Pendaftaran hanya 3 menit. Kami mendukung Anda dalam bahasa ibu, jadi jangan khawatir tentang bahasa Jepang.",
+      "cta": "Mulai Pendaftaran Gratis",
+      "note": "※ Staf akan menghubungi Anda setelah pendaftaran"
     }
   },
   "register": {

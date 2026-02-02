@@ -20,12 +20,47 @@
   },
   "home": {
     "hero": {
-      "title": "Start Your New Career in Japan",
-      "subtitle": "Employment support service for Specified Skilled Workers",
-      "cta": "Register Now (Free)"
+      "title": "Work in Japan as a Care Worker",
+      "subtitle": "Employment support service for Specified Skilled Workers, operated by a Registered Support Organization",
+      "cta": "Register Now (Free)",
+      "badge": "Actively Hiring",
+      "salary": "/month〜",
+      "cost": "cost",
+      "trust1": "Free registration",
+      "trust2": "Native language support",
+      "trust3": "Visa support",
+      "hired": "successful placements",
+      "miniReview": "Got a job in just 2 weeks!"
+    },
+    "socialProof": {
+      "title": "Many people have already found jobs",
+      "subtitle": "Workers from your country are thriving in Japan",
+      "stat1": "Successful placements",
+      "stat2": "Retention rate",
+      "stat3": "Average time to job",
+      "stat4": "Countries supported",
+      "weeks": " weeks",
+      "countries": "",
+      "monthlySalary": "Monthly salary",
+      "testimonial1": {
+        "name": "Adi",
+        "role": "Care Worker (Kagoshima)",
+        "quote": "I felt safe because I could consult in my native language. They supported all the visa procedures."
+      },
+      "testimonial2": {
+        "name": "Sunita",
+        "role": "Care Worker (Fukuoka)",
+        "quote": "My Japanese isn't perfect yet, but everyone is kind and I enjoy working every day."
+      },
+      "testimonial3": {
+        "name": "Min",
+        "role": "Care Worker (Kagoshima)",
+        "quote": "The salary is good and they helped me find a place to live. I'm happy I can send money to my family."
+      }
     },
     "features": {
       "title": "Why Choose Us",
+      "subtitle": "We fully support foreign workers like you",
       "feature1": {
         "title": "Nursing Care Specialists",
         "description": "Jobs focused on nursing care with experienced support staff"
@@ -39,10 +74,26 @@
         "description": "Comprehensive support from visa procedures to post-employment"
       }
     },
-    "cta": {
-      "title": "Start with Registration",
-      "description": "Complete registration in 5 easy steps. Completely free.",
-      "button": "Go to Registration"
+    "howItWorks": {
+      "title": "From Registration to Employment",
+      "subtitle": "Start your new career in 4 simple steps",
+      "step1": {
+        "title": "Free Registration",
+        "description": "Just 3 minutes. Enter basic info"
+      },
+      "step2": {
+        "title": "Interview",
+        "description": "We listen to your needs in your language"
+      },
+      "step3": {
+        "title": "Job Introduction",
+        "description": "We find jobs that match you"
+      },
+      "step4": {
+        "title": "Get Hired",
+        "description": "With visa support included"
+      },
+      "cta": "Start Free Registration"
     },
     "about": {
       "title": "About Aozora Care Group",
@@ -65,8 +116,14 @@
       },
       "learnMore": "Visit Company Website"
     },
+    "cta": {
+      "title": "Start with Registration",
+      "description": "Complete registration in 5 easy steps. Completely free.",
+      "button": "Go to Registration"
+    },
     "faq": {
       "title": "FAQ",
+      "subtitle": "You can also ask questions via chat",
       "q1": {
         "question": "Is registration free?",
         "answer": "Yes, everything from registration to employment is free."
@@ -78,7 +135,21 @@
       "q3": {
         "question": "What kind of jobs are available?",
         "answer": "Currently, we mainly handle nursing care positions."
+      },
+      "q4": {
+        "question": "Will you help with visa procedures?",
+        "answer": "Yes, as a Registered Support Organization, we fully support visa applications and renewals."
+      },
+      "q5": {
+        "question": "Will you help me find a place to live?",
+        "answer": "Yes, we provide housing search support. You can start your life in Japan with peace of mind."
       }
+    },
+    "finalCta": {
+      "title": "Start Your New Career Today",
+      "description": "Registration takes just 3 minutes. We support you in your native language, so don't worry about Japanese.",
+      "cta": "Start Free Registration",
+      "note": "※ A staff member will contact you after registration"
     }
   },
   "register": {
