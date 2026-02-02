@@ -22,6 +22,7 @@ export default async function HomePage({ params }: Props) {
     <>
       <HeroSection />
       <FeaturesSection />
+      <AboutCompanySection />
       <CTASection />
       <FAQSection />
       <ChatWidget initialLocale={locale} />
@@ -152,6 +153,108 @@ function FeaturesSection() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AboutCompanySection() {
+  const t = useTranslations('home.about')
+
+  const stats = [
+    { number: '50+', label: t('stats.facilities') },
+    { number: '16', label: t('stats.years') },
+    { number: '24/7', label: t('stats.support') },
+  ]
+
+  const benefits = [
+    { icon: '💰', text: t('benefits.salary') },
+    { icon: '📚', text: t('benefits.training') },
+    { icon: '🏠', text: t('benefits.housing') },
+    { icon: '🌍', text: t('benefits.diversity') },
+  ]
+
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-br from-dark-800 to-dark-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with Logo */}
+        <div className="text-center mb-12">
+          <div className="inline-block bg-white rounded-xl p-4 mb-6">
+            <Image
+              src="https://aozora-cg.com/wp-content/uploads/2025/04/new_rogo_grey.png"
+              alt="Aozora Care Group Logo"
+              width={200}
+              height={60}
+              className="h-12 w-auto"
+            />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            {t('title')}
+          </h2>
+          <p className="text-dark-300 max-w-2xl mx-auto">
+            {t('description')}
+          </p>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 md:gap-8 mb-12">
+          {stats.map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-primary-400 mb-2">
+                {stat.number}
+              </div>
+              <div className="text-sm md:text-base text-dark-300">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid md:grid-cols-2 gap-4 mb-12">
+          {benefits.map((benefit, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-4 bg-white/10 rounded-xl p-4 backdrop-blur-sm"
+            >
+              <span className="text-2xl">{benefit.icon}</span>
+              <span className="text-dark-100">{benefit.text}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CEO Message */}
+        <div className="bg-white/5 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
+          <div className="flex flex-col md:flex-row gap-6 items-center">
+            <div className="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center text-3xl flex-shrink-0">
+              👨‍💼
+            </div>
+            <div>
+              <p className="text-dark-200 mb-4 italic">
+                &ldquo;{t('ceo.message')}&rdquo;
+              </p>
+              <div>
+                <p className="font-bold text-white">{t('ceo.name')}</p>
+                <p className="text-sm text-dark-400">{t('ceo.title')}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Company Link */}
+        <div className="text-center mt-8">
+          <a
+            href="https://aozora-cg.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors"
+          >
+            {t('learnMore')}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

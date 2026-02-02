@@ -44,6 +44,27 @@
       "description": "Complete registration in 5 easy steps. Completely free.",
       "button": "Go to Registration"
     },
+    "about": {
+      "title": "About Aozora Care Group",
+      "description": "Operating 50+ nursing care and welfare facilities in Kagoshima and Fukuoka. We eliminate 'exploitation of passion' and use IT efficiency to pay high wages to our staff.",
+      "stats": {
+        "facilities": "Care Facilities",
+        "years": "Years of Experience",
+        "support": "Support System"
+      },
+      "benefits": {
+        "salary": "High wages through IT efficiency",
+        "training": "100% company-paid certification",
+        "housing": "Housing and life support included",
+        "diversity": "Ages 20-70, all nationalities welcome"
+      },
+      "ceo": {
+        "name": "Kosuke Omure",
+        "title": "CEO",
+        "message": "We want to create an environment where care workers can work with financial and emotional fulfillment. That is our mission."
+      },
+      "learnMore": "Visit Company Website"
+    },
     "faq": {
       "title": "FAQ",
       "q1": {

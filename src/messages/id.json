@@ -44,6 +44,27 @@
       "description": "Selesaikan pendaftaran dalam 5 langkah mudah. Sepenuhnya gratis.",
       "button": "Ke Pendaftaran"
     },
+    "about": {
+      "title": "Tentang Aozora Care Group",
+      "description": "Mengoperasikan 50+ fasilitas perawatan dan kesejahteraan di Kagoshima dan Fukuoka. Kami menghilangkan 'eksploitasi semangat' dan menggunakan efisiensi IT untuk membayar gaji tinggi kepada staf.",
+      "stats": {
+        "facilities": "Fasilitas Perawatan",
+        "years": "Tahun Pengalaman",
+        "support": "Sistem Dukungan"
+      },
+      "benefits": {
+        "salary": "Gaji tinggi melalui efisiensi IT",
+        "training": "Sertifikasi 100% dibayar perusahaan",
+        "housing": "Dukungan tempat tinggal dan kehidupan",
+        "diversity": "Usia 20-70, semua kewarganegaraan"
+      },
+      "ceo": {
+        "name": "Kosuke Omure",
+        "title": "CEO",
+        "message": "Kami ingin menciptakan lingkungan di mana pekerja perawatan dapat bekerja dengan kepuasan finansial dan emosional. Itulah misi kami."
+      },
+      "learnMore": "Kunjungi Situs Perusahaan"
+    },
     "faq": {
       "title": "FAQ",
       "q1": {
