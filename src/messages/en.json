@@ -63,17 +63,51 @@
   "register": {
     "title": "Job Seeker Registration",
     "subtitle": "Please enter your information",
+    "step1": "Basic Info",
+    "step2": "Residence & Skills",
+    "step3": "Contact",
     "form": {
       "name": "Full Name",
       "namePlaceholder": "e.g., NGUYEN VAN ANH",
+      "birthDate": "Date of Birth",
+      "birthDatePlaceholder": "e.g., 1995-01-15",
+      "gender": "Gender",
+      "genderPlaceholder": "Please select",
       "nationality": "Nationality",
       "nationalityPlaceholder": "Please select",
       "residenceStatus": "Residence Status",
       "residenceStatusPlaceholder": "Please select",
+      "residenceExpiry": "Residence Expiry Date",
+      "residenceExpiryPlaceholder": "e.g., 2026-03-31",
       "yearsInJapan": "Years in Japan",
       "yearsInJapanPlaceholder": "e.g., 3",
+      "japaneseLevel": "Japanese Proficiency",
+      "japaneseLevelPlaceholder": "Please select",
+      "desiredJob": "Desired Job",
+      "desiredJobPlaceholder": "Please select",
       "contact": "Contact (LINE ID preferred)",
       "contactPlaceholder": "e.g., your_line_id"
+    },
+    "genders": {
+      "MALE": "Male",
+      "FEMALE": "Female",
+      "OTHER": "Other"
+    },
+    "japaneseLevels": {
+      "N1": "N1 (Business level)",
+      "N2": "N2 (Advanced daily conversation)",
+      "N3": "N3 (Intermediate daily conversation)",
+      "N4": "N4 (Basic daily conversation)",
+      "N5": "N5 (Beginner level)",
+      "JFT_A2": "JFT-Basic A2 or above",
+      "STUDYING": "Currently studying",
+      "NONE": "Not learned"
+    },
+    "desiredJobs": {
+      "CARE_WORKER": "Care Worker",
+      "CARE_SUPPORT": "Care Support",
+      "NURSING_ASSISTANT": "Nursing Assistant",
+      "OTHER": "Other"
     },
     "nationalities": {
       "ID": "Indonesia",

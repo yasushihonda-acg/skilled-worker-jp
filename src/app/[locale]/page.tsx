@@ -2,7 +2,13 @@ import { useTranslations } from 'next-intl'
 import { setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/routing'
 import Image from 'next/image'
-import ChatWidget from '@/components/chat/ChatWidget'
+import nextDynamic from 'next/dynamic'
+
+const ChatWidget = nextDynamic(() => import('@/components/chat/ChatWidget'), {
+  ssr: false,
+})
+
+export const dynamic = 'force-dynamic'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -18,7 +24,7 @@ export default async function HomePage({ params }: Props) {
       <FeaturesSection />
       <CTASection />
       <FAQSection />
-      <ChatWidget />
+      <ChatWidget initialLocale={locale} />
     </>
   )
 }

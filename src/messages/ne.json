@@ -63,17 +63,51 @@
   "register": {
     "title": "रोजगार खोज्ने दर्ता",
     "subtitle": "कृपया आफ्नो जानकारी प्रविष्ट गर्नुहोस्",
+    "step1": "आधारभूत जानकारी",
+    "step2": "निवास र सीप",
+    "step3": "सम्पर्क",
     "form": {
       "name": "पूरा नाम",
       "namePlaceholder": "उदाहरण: NGUYEN VAN ANH",
+      "birthDate": "जन्म मिति",
+      "birthDatePlaceholder": "उदाहरण: 1995-01-15",
+      "gender": "लिङ्ग",
+      "genderPlaceholder": "कृपया छान्नुहोस्",
       "nationality": "राष्ट्रियता",
       "nationalityPlaceholder": "कृपया छान्नुहोस्",
       "residenceStatus": "निवास स्थिति",
       "residenceStatusPlaceholder": "कृपया छान्नुहोस्",
+      "residenceExpiry": "निवास समाप्ति मिति",
+      "residenceExpiryPlaceholder": "उदाहरण: 2026-03-31",
       "yearsInJapan": "जापानमा वर्षहरू",
       "yearsInJapanPlaceholder": "उदाहरण: 3",
+      "japaneseLevel": "जापानी भाषा दक्षता",
+      "japaneseLevelPlaceholder": "कृपया छान्नुहोस्",
+      "desiredJob": "चाहिएको काम",
+      "desiredJobPlaceholder": "कृपया छान्नुहोस्",
       "contact": "सम्पर्क (LINE ID रुचाइन्छ)",
       "contactPlaceholder": "उदाहरण: your_line_id"
+    },
+    "genders": {
+      "MALE": "पुरुष",
+      "FEMALE": "महिला",
+      "OTHER": "अन्य"
+    },
+    "japaneseLevels": {
+      "N1": "N1 (व्यापार स्तर)",
+      "N2": "N2 (उन्नत दैनिक कुराकानी)",
+      "N3": "N3 (मध्यम दैनिक कुराकानी)",
+      "N4": "N4 (आधारभूत दैनिक कुराकानी)",
+      "N5": "N5 (शुरुवाती स्तर)",
+      "JFT_A2": "JFT-Basic A2 वा माथि",
+      "STUDYING": "अध्ययन गर्दै",
+      "NONE": "नसिकेको"
+    },
+    "desiredJobs": {
+      "CARE_WORKER": "हेरचाह कार्यकर्ता",
+      "CARE_SUPPORT": "हेरचाह सहयोग",
+      "NURSING_ASSISTANT": "नर्सिङ सहायक",
+      "OTHER": "अन्य"
     },
     "nationalities": {
       "ID": "इन्डोनेसिया",

@@ -63,17 +63,51 @@
   "register": {
     "title": "Pendaftaran Pencari Kerja",
     "subtitle": "Silakan masukkan informasi Anda",
+    "step1": "Info Dasar",
+    "step2": "Tinggal & Keterampilan",
+    "step3": "Kontak",
     "form": {
       "name": "Nama Lengkap",
       "namePlaceholder": "contoh: NGUYEN VAN ANH",
+      "birthDate": "Tanggal Lahir",
+      "birthDatePlaceholder": "contoh: 1995-01-15",
+      "gender": "Jenis Kelamin",
+      "genderPlaceholder": "Silakan pilih",
       "nationality": "Kewarganegaraan",
       "nationalityPlaceholder": "Silakan pilih",
       "residenceStatus": "Status Tinggal",
       "residenceStatusPlaceholder": "Silakan pilih",
+      "residenceExpiry": "Tanggal Berakhir Tinggal",
+      "residenceExpiryPlaceholder": "contoh: 2026-03-31",
       "yearsInJapan": "Tahun di Jepang",
       "yearsInJapanPlaceholder": "contoh: 3",
+      "japaneseLevel": "Kemampuan Bahasa Jepang",
+      "japaneseLevelPlaceholder": "Silakan pilih",
+      "desiredJob": "Pekerjaan yang Diinginkan",
+      "desiredJobPlaceholder": "Silakan pilih",
       "contact": "Kontak (LINE ID diutamakan)",
       "contactPlaceholder": "contoh: your_line_id"
+    },
+    "genders": {
+      "MALE": "Laki-laki",
+      "FEMALE": "Perempuan",
+      "OTHER": "Lainnya"
+    },
+    "japaneseLevels": {
+      "N1": "N1 (Level Bisnis)",
+      "N2": "N2 (Percakapan Harian Lanjutan)",
+      "N3": "N3 (Percakapan Harian Menengah)",
+      "N4": "N4 (Percakapan Harian Dasar)",
+      "N5": "N5 (Level Pemula)",
+      "JFT_A2": "JFT-Basic A2 atau lebih",
+      "STUDYING": "Sedang belajar",
+      "NONE": "Belum belajar"
+    },
+    "desiredJobs": {
+      "CARE_WORKER": "Pekerja Perawatan",
+      "CARE_SUPPORT": "Dukungan Perawatan",
+      "NURSING_ASSISTANT": "Asisten Keperawatan",
+      "OTHER": "Lainnya"
     },
     "nationalities": {
       "ID": "Indonesia",
