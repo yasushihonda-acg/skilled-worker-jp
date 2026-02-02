@@ -1,0 +1,111 @@
+{
+  "common": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "required": "Required"
+  },
+  "header": {
+    "title": "skilled-worker-jp",
+    "subtitle": "Job site for foreign workers in Japan",
+    "register": "Register",
+    "login": "Login"
+  },
+  "footer": {
+    "company": "Aozora Care Group",
+    "copyright": "© 2025 Aozora Care Group. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "home": {
+    "hero": {
+      "title": "Start Your New Career in Japan",
+      "subtitle": "Employment support service for Specified Skilled Workers",
+      "cta": "Register Now (Free)"
+    },
+    "features": {
+      "title": "Why Choose Us",
+      "feature1": {
+        "title": "Nursing Care Specialists",
+        "description": "Jobs focused on nursing care with experienced support staff"
+      },
+      "feature2": {
+        "title": "Support in Your Language",
+        "description": "Consultation available in Indonesian, Nepali, and Burmese"
+      },
+      "feature3": {
+        "title": "Registered Support Organization",
+        "description": "Comprehensive support from visa procedures to post-employment"
+      }
+    },
+    "cta": {
+      "title": "Start with Registration",
+      "description": "Complete registration in 5 easy steps. Completely free.",
+      "button": "Go to Registration"
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "question": "Is registration free?",
+        "answer": "Yes, everything from registration to employment is free."
+      },
+      "q2": {
+        "question": "Is it okay if I don't speak Japanese?",
+        "answer": "We provide support in your native language. Don't worry if Japanese is difficult."
+      },
+      "q3": {
+        "question": "What kind of jobs are available?",
+        "answer": "Currently, we mainly handle nursing care positions."
+      }
+    }
+  },
+  "register": {
+    "title": "Job Seeker Registration",
+    "subtitle": "Please enter your information",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "e.g., NGUYEN VAN ANH",
+      "nationality": "Nationality",
+      "nationalityPlaceholder": "Please select",
+      "residenceStatus": "Residence Status",
+      "residenceStatusPlaceholder": "Please select",
+      "yearsInJapan": "Years in Japan",
+      "yearsInJapanPlaceholder": "e.g., 3",
+      "contact": "Contact (LINE ID preferred)",
+      "contactPlaceholder": "e.g., your_line_id"
+    },
+    "nationalities": {
+      "ID": "Indonesia",
+      "NP": "Nepal",
+      "MM": "Myanmar",
+      "VN": "Vietnam",
+      "PH": "Philippines",
+      "OTHER": "Other"
+    },
+    "residenceStatuses": {
+      "TRAINEE_1": "Technical Intern Training 1",
+      "TRAINEE_2": "Technical Intern Training 2",
+      "TRAINEE_3": "Technical Intern Training 3",
+      "SSW_1": "Specified Skilled Worker 1",
+      "SSW_2": "Specified Skilled Worker 2",
+      "OTHER": "Other"
+    },
+    "confirm": {
+      "title": "Confirm Your Information",
+      "edit": "Edit"
+    },
+    "complete": {
+      "title": "Registration Complete",
+      "message": "Thank you for registering. We will contact you soon.",
+      "back": "Back to Home"
+    }
+  },
+  "chat": {
+    "title": "Chat Support",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "welcome": "Hello! How can I help you today?",
+    "preparing": "Currently under preparation. Please wait."
+  }
+}

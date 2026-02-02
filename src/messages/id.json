@@ -1,0 +1,111 @@
+{
+  "common": {
+    "submit": "Kirim",
+    "cancel": "Batal",
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "required": "Wajib"
+  },
+  "header": {
+    "title": "skilled-worker-jp",
+    "subtitle": "Situs lowongan kerja untuk pekerja asing di Jepang",
+    "register": "Daftar",
+    "login": "Masuk"
+  },
+  "footer": {
+    "company": "Aozora Care Group",
+    "copyright": "© 2025 Aozora Care Group. Hak cipta dilindungi.",
+    "privacy": "Kebijakan Privasi",
+    "terms": "Ketentuan Layanan"
+  },
+  "home": {
+    "hero": {
+      "title": "Mulai Karir Baru Anda di Jepang",
+      "subtitle": "Layanan dukungan pekerjaan untuk Pekerja Terampil Khusus",
+      "cta": "Daftar Sekarang (Gratis)"
+    },
+    "features": {
+      "title": "Mengapa Memilih Kami",
+      "feature1": {
+        "title": "Spesialis Perawatan",
+        "description": "Pekerjaan fokus pada perawatan dengan staf pendukung berpengalaman"
+      },
+      "feature2": {
+        "title": "Dukungan dalam Bahasa Anda",
+        "description": "Konsultasi tersedia dalam Bahasa Indonesia, Nepal, dan Burma"
+      },
+      "feature3": {
+        "title": "Organisasi Pendukung Terdaftar",
+        "description": "Dukungan komprehensif dari prosedur visa hingga pasca-pekerjaan"
+      }
+    },
+    "cta": {
+      "title": "Mulai dengan Pendaftaran",
+      "description": "Selesaikan pendaftaran dalam 5 langkah mudah. Sepenuhnya gratis.",
+      "button": "Ke Pendaftaran"
+    },
+    "faq": {
+      "title": "FAQ",
+      "q1": {
+        "question": "Apakah pendaftaran gratis?",
+        "answer": "Ya, semuanya dari pendaftaran hingga pekerjaan gratis."
+      },
+      "q2": {
+        "question": "Apakah tidak apa-apa jika saya tidak bisa bahasa Jepang?",
+        "answer": "Kami menyediakan dukungan dalam bahasa ibu Anda. Jangan khawatir jika bahasa Jepang sulit."
+      },
+      "q3": {
+        "question": "Pekerjaan apa yang tersedia?",
+        "answer": "Saat ini, kami terutama menangani posisi perawatan."
+      }
+    }
+  },
+  "register": {
+    "title": "Pendaftaran Pencari Kerja",
+    "subtitle": "Silakan masukkan informasi Anda",
+    "form": {
+      "name": "Nama Lengkap",
+      "namePlaceholder": "contoh: NGUYEN VAN ANH",
+      "nationality": "Kewarganegaraan",
+      "nationalityPlaceholder": "Silakan pilih",
+      "residenceStatus": "Status Tinggal",
+      "residenceStatusPlaceholder": "Silakan pilih",
+      "yearsInJapan": "Tahun di Jepang",
+      "yearsInJapanPlaceholder": "contoh: 3",
+      "contact": "Kontak (LINE ID diutamakan)",
+      "contactPlaceholder": "contoh: your_line_id"
+    },
+    "nationalities": {
+      "ID": "Indonesia",
+      "NP": "Nepal",
+      "MM": "Myanmar",
+      "VN": "Vietnam",
+      "PH": "Filipina",
+      "OTHER": "Lainnya"
+    },
+    "residenceStatuses": {
+      "TRAINEE_1": "Pelatihan Magang Teknis 1",
+      "TRAINEE_2": "Pelatihan Magang Teknis 2",
+      "TRAINEE_3": "Pelatihan Magang Teknis 3",
+      "SSW_1": "Pekerja Terampil Khusus 1",
+      "SSW_2": "Pekerja Terampil Khusus 2",
+      "OTHER": "Lainnya"
+    },
+    "confirm": {
+      "title": "Konfirmasi Informasi Anda",
+      "edit": "Edit"
+    },
+    "complete": {
+      "title": "Pendaftaran Selesai",
+      "message": "Terima kasih telah mendaftar. Kami akan menghubungi Anda segera.",
+      "back": "Kembali ke Beranda"
+    }
+  },
+  "chat": {
+    "title": "Dukungan Chat",
+    "placeholder": "Ketik pesan Anda...",
+    "send": "Kirim",
+    "welcome": "Halo! Ada yang bisa saya bantu?",
+    "preparing": "Sedang dalam persiapan. Mohon tunggu."
+  }
+}

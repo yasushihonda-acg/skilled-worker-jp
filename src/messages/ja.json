@@ -1,0 +1,111 @@
+{
+  "common": {
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "required": "必須"
+  },
+  "header": {
+    "title": "skilled-worker-jp",
+    "subtitle": "日本で働く外国人のための求人サイト",
+    "register": "登録する",
+    "login": "ログイン"
+  },
+  "footer": {
+    "company": "あおぞらケアグループ",
+    "copyright": "© 2025 Aozora Care Group. All rights reserved.",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
+  },
+  "home": {
+    "hero": {
+      "title": "日本で新しいキャリアを始めよう",
+      "subtitle": "特定技能外国人のための就職支援サービス",
+      "cta": "今すぐ登録（無料）"
+    },
+    "features": {
+      "title": "選ばれる3つの理由",
+      "feature1": {
+        "title": "介護専門のサポート",
+        "description": "介護業界に特化した求人と、経験豊富なスタッフによるサポート"
+      },
+      "feature2": {
+        "title": "母国語でサポート",
+        "description": "インドネシア語、ネパール語、ビルマ語で相談できます"
+      },
+      "feature3": {
+        "title": "登録支援機関が運営",
+        "description": "ビザ手続きから就職後のサポートまで一貫してお手伝い"
+      }
+    },
+    "cta": {
+      "title": "まずは登録から",
+      "description": "簡単5ステップで登録完了。すべて無料です。",
+      "button": "登録フォームへ"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": {
+        "question": "登録は無料ですか？",
+        "answer": "はい、登録から就職まですべて無料でご利用いただけます。"
+      },
+      "q2": {
+        "question": "日本語が話せなくても大丈夫ですか？",
+        "answer": "母国語でのサポートを提供しています。日本語が苦手な方もご安心ください。"
+      },
+      "q3": {
+        "question": "どんな仕事がありますか？",
+        "answer": "現在は介護分野の求人を中心に取り扱っています。"
+      }
+    }
+  },
+  "register": {
+    "title": "求職者登録",
+    "subtitle": "あなたの情報を入力してください",
+    "form": {
+      "name": "お名前",
+      "namePlaceholder": "例: NGUYEN VAN ANH",
+      "nationality": "国籍",
+      "nationalityPlaceholder": "選択してください",
+      "residenceStatus": "在留資格",
+      "residenceStatusPlaceholder": "選択してください",
+      "yearsInJapan": "日本在住年数",
+      "yearsInJapanPlaceholder": "例: 3",
+      "contact": "連絡先（LINE ID推奨）",
+      "contactPlaceholder": "例: your_line_id"
+    },
+    "nationalities": {
+      "ID": "インドネシア",
+      "NP": "ネパール",
+      "MM": "ミャンマー",
+      "VN": "ベトナム",
+      "PH": "フィリピン",
+      "OTHER": "その他"
+    },
+    "residenceStatuses": {
+      "TRAINEE_1": "技能実習1号",
+      "TRAINEE_2": "技能実習2号",
+      "TRAINEE_3": "技能実習3号",
+      "SSW_1": "特定技能1号",
+      "SSW_2": "特定技能2号",
+      "OTHER": "その他"
+    },
+    "confirm": {
+      "title": "入力内容の確認",
+      "edit": "修正する"
+    },
+    "complete": {
+      "title": "登録完了",
+      "message": "ご登録ありがとうございます。担当者より連絡いたします。",
+      "back": "トップページへ戻る"
+    }
+  },
+  "chat": {
+    "title": "チャットで質問",
+    "placeholder": "メッセージを入力...",
+    "send": "送信",
+    "welcome": "こんにちは！何かお手伝いできることはありますか？",
+    "preparing": "現在準備中です。しばらくお待ちください。"
+  }
+}
