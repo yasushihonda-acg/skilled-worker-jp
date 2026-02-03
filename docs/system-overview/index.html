@@ -101,6 +101,24 @@
       padding: 40px;
     }
 
+    /* Section Divider */
+    .section-divider {
+      margin: 60px 0 40px;
+      padding: 20px 0;
+      border-top: 3px solid #e5e7eb;
+      text-align: center;
+    }
+
+    .section-divider-label {
+      display: inline-block;
+      padding: 8px 24px;
+      background: #f3f4f6;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b7280;
+    }
+
     /* Typography */
     h1 {
       font-size: 28px;
@@ -205,82 +223,173 @@
     .code-content .string { color: #4ade80; }
     .code-content .function { color: #60a5fa; }
 
-    /* Cards Grid */
-    .cards-grid {
+    /* Visual Cards */
+    .visual-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin: 16px 0 24px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 24px 0 32px;
     }
 
-    .card {
+    @media (max-width: 768px) {
+      .visual-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .visual-card {
       background: #fff;
       border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 20px;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
     }
 
-    .card-icon {
-      font-size: 24px;
-      margin-bottom: 12px;
+    .visual-card-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
     }
 
-    .card-title {
-      font-size: 15px;
-      font-weight: 600;
+    .visual-card-title {
+      font-size: 16px;
+      font-weight: 700;
       color: #1a1a1a;
       margin-bottom: 8px;
     }
 
-    .card-desc {
+    .visual-card-desc {
       font-size: 13px;
       color: #6b7280;
+      line-height: 1.6;
     }
 
-    /* Language Pills */
-    .lang-list {
+    /* Stats Row */
+    .stats-row {
       display: flex;
+      justify-content: space-around;
+      background: linear-gradient(135deg, #00a3a9 0%, #00c4cc 100%);
+      border-radius: 12px;
+      padding: 32px 16px;
+      margin: 24px 0 32px;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: #fff;
+    }
+
+    .stat-value {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      margin-top: 8px;
+      opacity: 0.9;
+    }
+
+    /* Language Flags */
+    .lang-flags {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 24px 0 32px;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 16px 0 24px;
     }
 
-    .lang-pill {
+    .lang-flag-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
+    }
+
+    .lang-flag-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      background: #fff;
+      border: 2px solid #e5e7eb;
+    }
+
+    .lang-flag-name {
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    /* Flow Diagram */
+    .flow-diagram {
       background: #fff;
       border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      font-size: 14px;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0 32px;
     }
 
-    .lang-pill code {
-      font-family: 'Source Code Pro', monospace;
-      font-size: 12px;
-      color: #6b7280;
+    .flow-svg {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      display: block;
     }
 
-    /* Steps */
-    .steps {
-      margin: 16px 0 24px;
-    }
-
-    .step {
-      display: flex;
+    /* Step Cards */
+    .step-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid #f3f4f6;
+      margin: 24px 0 32px;
     }
 
-    .step:last-child {
-      border-bottom: none;
+    @media (max-width: 768px) {
+      .step-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-card::after {
+      content: '→';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #d1d5db;
+    }
+
+    .step-card:last-child::after {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .step-card::after {
+        content: '↓';
+        right: 50%;
+        top: auto;
+        bottom: -20px;
+        transform: translateX(50%);
+      }
     }
 
     .step-number {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       background: #00a3a9;
       color: #fff;
       border-radius: 50%;
@@ -288,35 +397,20 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 14px;
-      flex-shrink: 0;
+      font-size: 18px;
+      margin: 0 auto 12px;
     }
 
-    .step-content h4 {
+    .step-title {
       font-size: 15px;
       font-weight: 600;
-      margin-bottom: 4px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
     }
 
-    .step-content p {
-      font-size: 14px;
+    .step-desc {
+      font-size: 13px;
       color: #6b7280;
-      margin: 0;
-    }
-
-    /* Mermaid */
-    .mermaid-wrapper {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 16px 0 24px;
-      overflow-x: auto;
-    }
-
-    .mermaid {
-      display: flex;
-      justify-content: center;
     }
 
     /* Info Box */
@@ -341,6 +435,75 @@
       margin: 0;
     }
 
+    /* Page Flow Visual */
+    .page-flow {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0 32px;
+    }
+
+    /* Mermaid */
+    .mermaid-wrapper {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 16px 0 24px;
+      overflow-x: auto;
+    }
+
+    .mermaid {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Arch Grid */
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 16px 0 24px;
+    }
+
+    @media (max-width: 768px) {
+      .arch-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .arch-box {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .arch-box-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #00a3a9;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .arch-box-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      background: #f9fafb;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .arch-box-item:last-child {
+      margin-bottom: 0;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .sidebar {
@@ -351,6 +514,10 @@
       }
       .content {
         padding: 24px 16px;
+      }
+      .stats-row {
+        flex-wrap: wrap;
+        gap: 24px;
       }
     }
   </style>
@@ -364,20 +531,17 @@
     </div>
 
     <nav class="nav-section">
-      <div class="nav-section-title">概要</div>
-      <a href="#overview" class="nav-link active">プロジェクト概要</a>
-      <a href="#features" class="nav-link">主要機能</a>
-      <a href="#languages" class="nav-link">対応言語</a>
-    </nav>
-
-    <nav class="nav-section">
       <div class="nav-section-title">一般向け</div>
+      <a href="#overview" class="nav-link active">サービス概要</a>
+      <a href="#features" class="nav-link">3つの特徴</a>
+      <a href="#languages" class="nav-link">対応言語</a>
       <a href="#user-flow" class="nav-link">利用の流れ</a>
       <a href="#registration" class="nav-link">登録ステップ</a>
+      <a href="#pages" class="nav-link">ページ構成</a>
     </nav>
 
     <nav class="nav-section">
-      <div class="nav-section-title">技術仕様</div>
+      <div class="nav-section-title">エンジニア向け</div>
       <a href="#tech-stack" class="nav-link">技術スタック</a>
       <a href="#architecture" class="nav-link">アーキテクチャ</a>
       <a href="#request-flow" class="nav-link">リクエストフロー</a>
@@ -391,60 +555,82 @@
   <main class="main">
     <div class="content">
 
+      <!-- ===== 一般向けセクション ===== -->
+
       <!-- Overview -->
       <section id="overview">
-        <span class="badge">Internal Documentation</span>
-        <h1>skilled-worker-jp システム概要</h1>
-        <p class="lead">特定技能外国人向け人材募集サイトのシステム構成と技術仕様をまとめたドキュメントです。</p>
+        <span class="badge">社内ドキュメント</span>
+        <h1>skilled-worker-jp</h1>
+        <p class="lead">特定技能外国人向けの求職者登録サイトです。日本で働きたい外国人の方をサポートします。</p>
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-value">5</div>
+            <div class="stat-label">対応言語</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">3</div>
+            <div class="stat-label">登録ステップ</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">24h</div>
+            <div class="stat-label">AIチャット対応</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">¥0</div>
+            <div class="stat-label">利用料金</div>
+          </div>
+        </div>
 
         <div class="info-box">
           <div class="info-box-title">運営会社</div>
           <p>あおぞらケアグループ - 鹿児島・福岡で50以上の介護・福祉施設を運営</p>
         </div>
-
-        <table>
-          <tr>
-            <th>項目</th>
-            <th>内容</th>
-          </tr>
-          <tr>
-            <td>目的</td>
-            <td>技能実習生（3年以上滞在）を特定技能へ移行させるための求職者登録</td>
-          </tr>
-          <tr>
-            <td>ターゲット</td>
-            <td>インドネシア、ネパール、ミャンマーの外国人労働者</td>
-          </tr>
-          <tr>
-            <td>対象業種</td>
-            <td>介護（将来的に全業種対応予定）</td>
-          </tr>
-          <tr>
-            <td>本番URL</td>
-            <td><a href="https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app">skilled-worker-jp-ih4hgkgkfa-an.a.run.app</a></td>
-          </tr>
-        </table>
       </section>
 
       <!-- Features -->
       <section id="features">
-        <h2>主要機能</h2>
+        <h2>3つの特徴</h2>
 
-        <div class="cards-grid">
-          <div class="card">
-            <div class="card-icon">🌍</div>
-            <div class="card-title">多言語対応</div>
-            <div class="card-desc">5言語（日本語・英語・インドネシア語・ネパール語・ビルマ語）に対応</div>
+        <div class="visual-cards">
+          <div class="visual-card">
+            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <circle cx="40" cy="28" r="12" fill="#00a3a9"/>
+              <path d="M20 60c0-11 9-20 20-20s20 9 20 20" fill="#00a3a9"/>
+              <circle cx="58" cy="22" r="8" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
+              <text x="58" y="26" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">5</text>
+            </svg>
+            <div class="visual-card-title">多言語対応</div>
+            <div class="visual-card-desc">日本語・英語・インドネシア語・ネパール語・ビルマ語の5言語に対応。母国語で安心して利用できます。</div>
           </div>
-          <div class="card">
-            <div class="card-icon">📝</div>
-            <div class="card-title">求職者登録</div>
-            <div class="card-desc">3ステップで基本情報・在留資格・連絡先を登録</div>
+
+          <div class="visual-card">
+            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <rect x="22" y="20" width="36" height="44" rx="4" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
+              <line x1="28" y1="30" x2="52" y2="30" stroke="#00a3a9" stroke-width="2"/>
+              <line x1="28" y1="38" x2="52" y2="38" stroke="#00a3a9" stroke-width="2"/>
+              <line x1="28" y1="46" x2="44" y2="46" stroke="#00a3a9" stroke-width="2"/>
+              <circle cx="52" cy="54" r="8" fill="#00a3a9"/>
+              <path d="M49 54l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="visual-card-title">かんたん登録</div>
+            <div class="visual-card-desc">わずか3ステップで登録完了。基本情報・在留資格・連絡先を入力するだけ。約3分で完了します。</div>
           </div>
-          <div class="card">
-            <div class="card-icon">🤖</div>
-            <div class="card-title">AIチャット</div>
-            <div class="card-desc">Vertex AI (Gemini)による24時間相談対応</div>
+
+          <div class="visual-card">
+            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <rect x="18" y="24" width="44" height="36" rx="6" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
+              <circle cx="32" cy="38" r="6" fill="#00a3a9"/>
+              <rect x="42" y="34" width="14" height="3" rx="1.5" fill="#00a3a9"/>
+              <rect x="42" y="40" width="10" height="3" rx="1.5" fill="#d1d5db"/>
+              <rect x="24" y="50" width="32" height="4" rx="2" fill="#00a3a9"/>
+            </svg>
+            <div class="visual-card-title">AIチャット</div>
+            <div class="visual-card-desc">特定技能ビザや就職に関する疑問をAIが24時間サポート。母国語で気軽に質問できます。</div>
           </div>
         </div>
       </section>
@@ -452,59 +638,170 @@
       <!-- Languages -->
       <section id="languages">
         <h2>対応言語</h2>
+        <p>ユーザーは自分の言語でサイトを利用できます。</p>
 
-        <div class="lang-list">
-          <div class="lang-pill">🇯🇵 日本語 <code>ja</code></div>
-          <div class="lang-pill">🇬🇧 English <code>en</code></div>
-          <div class="lang-pill">🇮🇩 Indonesia <code>id</code></div>
-          <div class="lang-pill">🇳🇵 नेपाली <code>ne</code></div>
-          <div class="lang-pill">🇲🇲 မြန်မာ <code>my</code></div>
+        <div class="lang-flags">
+          <div class="lang-flag-item">
+            <div class="lang-flag-circle">🇯🇵</div>
+            <div class="lang-flag-name">日本語</div>
+          </div>
+          <div class="lang-flag-item">
+            <div class="lang-flag-circle">🇬🇧</div>
+            <div class="lang-flag-name">English</div>
+          </div>
+          <div class="lang-flag-item">
+            <div class="lang-flag-circle">🇮🇩</div>
+            <div class="lang-flag-name">Indonesia</div>
+          </div>
+          <div class="lang-flag-item">
+            <div class="lang-flag-circle">🇳🇵</div>
+            <div class="lang-flag-name">नेपाली</div>
+          </div>
+          <div class="lang-flag-item">
+            <div class="lang-flag-circle">🇲🇲</div>
+            <div class="lang-flag-name">မြန်မာ</div>
+          </div>
         </div>
       </section>
 
       <!-- User Flow -->
       <section id="user-flow">
         <h2>利用の流れ</h2>
-        <p>ユーザーは以下の4ステップで登録から就職まで進みます。</p>
+        <p>登録から就職までの全体フローです。</p>
 
-        <div class="mermaid-wrapper">
-          <div class="mermaid">
-flowchart LR
-    A[📝 登録] --> B[💬 面談]
-    B --> C[🔍 紹介]
-    C --> D[🎉 就職]
-          </div>
+        <div class="flow-diagram">
+          <svg class="flow-svg" viewBox="0 0 700 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Step 1 -->
+            <g>
+              <circle cx="80" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <text x="80" y="45" text-anchor="middle" font-size="24">📝</text>
+              <text x="80" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 1</text>
+              <text x="80" y="105" text-anchor="middle" font-size="14" fill="#1a1a1a" font-weight="600">登録</text>
+            </g>
+
+            <!-- Arrow 1 -->
+            <path d="M130 50 L190 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
+              <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+            </path>
+            <polygon points="190,45 200,50 190,55" fill="#00a3a9"/>
+
+            <!-- Step 2 -->
+            <g>
+              <circle cx="260" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <text x="260" y="45" text-anchor="middle" font-size="24">💬</text>
+              <text x="260" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 2</text>
+              <text x="260" y="105" text-anchor="middle" font-size="14" fill="#1a1a1a" font-weight="600">面談</text>
+            </g>
+
+            <!-- Arrow 2 -->
+            <path d="M310 50 L370 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
+              <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+            </path>
+            <polygon points="370,45 380,50 370,55" fill="#00a3a9"/>
+
+            <!-- Step 3 -->
+            <g>
+              <circle cx="440" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
+              <text x="440" y="45" text-anchor="middle" font-size="24">🔍</text>
+              <text x="440" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 3</text>
+              <text x="440" y="105" text-anchor="middle" font-size="14" fill="#1a1a1a" font-weight="600">紹介</text>
+            </g>
+
+            <!-- Arrow 3 -->
+            <path d="M490 50 L550 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
+              <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
+            </path>
+            <polygon points="550,45 560,50 550,55" fill="#00a3a9"/>
+
+            <!-- Step 4 -->
+            <g>
+              <circle cx="620" cy="50" r="40" fill="#00a3a9" stroke="#00a3a9" stroke-width="2"/>
+              <text x="620" y="45" text-anchor="middle" font-size="24">🎉</text>
+              <text x="620" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">GOAL</text>
+              <text x="620" y="105" text-anchor="middle" font-size="14" fill="#1a1a1a" font-weight="600">就職</text>
+            </g>
+          </svg>
         </div>
       </section>
 
-      <!-- Registration -->
+      <!-- Registration Steps -->
       <section id="registration">
         <h2>登録ステップ</h2>
+        <p>サイトでの登録は3ステップで完了します。</p>
 
-        <div class="steps">
-          <div class="step">
+        <div class="step-cards">
+          <div class="step-card">
             <div class="step-number">1</div>
-            <div class="step-content">
-              <h4>基本情報</h4>
-              <p>氏名・生年月日・性別・国籍を入力</p>
-            </div>
+            <div class="step-title">基本情報</div>
+            <div class="step-desc">氏名・生年月日<br>性別・国籍</div>
           </div>
-          <div class="step">
+          <div class="step-card">
             <div class="step-number">2</div>
-            <div class="step-content">
-              <h4>在留資格・スキル</h4>
-              <p>在留資格・期限・日本語レベル・希望職種を選択</p>
-            </div>
+            <div class="step-title">在留資格・スキル</div>
+            <div class="step-desc">在留資格・期限<br>日本語レベル・希望職種</div>
           </div>
-          <div class="step">
+          <div class="step-card">
             <div class="step-number">3</div>
-            <div class="step-content">
-              <h4>連絡先</h4>
-              <p>LINE ID等の連絡先を入力して完了</p>
-            </div>
+            <div class="step-title">連絡先</div>
+            <div class="step-desc">LINE ID等の連絡先<br>→ 登録完了！</div>
           </div>
         </div>
       </section>
+
+      <!-- Pages -->
+      <section id="pages">
+        <h2>ページ構成</h2>
+        <p>サイトは2つのメインページで構成されています。</p>
+
+        <div class="page-flow">
+          <svg width="100%" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- LP Page -->
+            <g>
+              <rect x="40" y="20" width="200" height="160" rx="8" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+              <rect x="40" y="20" width="200" height="30" rx="8" fill="#00a3a9"/>
+              <rect x="40" y="42" width="200" height="8" fill="#00a3a9"/>
+              <text x="140" y="40" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">トップページ (LP)</text>
+
+              <!-- LP Content -->
+              <rect x="55" y="65" width="170" height="20" rx="2" fill="#f3f4f6"/>
+              <rect x="55" y="90" width="80" height="8" rx="2" fill="#e5e7eb"/>
+              <rect x="55" y="102" width="120" height="8" rx="2" fill="#e5e7eb"/>
+              <rect x="55" y="120" width="170" height="25" rx="4" fill="#00a3a9"/>
+              <text x="140" y="137" text-anchor="middle" font-size="10" fill="#fff">登録ボタン</text>
+              <rect x="55" y="155" width="50" height="15" rx="2" fill="#e0f7f8"/>
+              <text x="80" y="166" text-anchor="middle" font-size="8" fill="#00a3a9">チャット</text>
+            </g>
+
+            <!-- Arrow -->
+            <g>
+              <path d="M260 100 L320 100" stroke="#00a3a9" stroke-width="2"/>
+              <polygon points="320,95 335,100 320,105" fill="#00a3a9"/>
+              <text x="290" y="90" text-anchor="middle" font-size="10" fill="#6b7280">クリック</text>
+            </g>
+
+            <!-- Register Page -->
+            <g>
+              <rect x="360" y="20" width="200" height="160" rx="8" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
+              <rect x="360" y="20" width="200" height="30" rx="8" fill="#00a3a9"/>
+              <rect x="360" y="42" width="200" height="8" fill="#00a3a9"/>
+              <text x="460" y="40" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">登録フォーム</text>
+
+              <!-- Form Content -->
+              <text x="375" y="75" font-size="10" fill="#6b7280">Step 1 → 2 → 3</text>
+              <rect x="375" y="85" width="170" height="12" rx="2" fill="#f3f4f6"/>
+              <rect x="375" y="102" width="170" height="12" rx="2" fill="#f3f4f6"/>
+              <rect x="375" y="119" width="170" height="12" rx="2" fill="#f3f4f6"/>
+              <rect x="375" y="140" width="170" height="25" rx="4" fill="#00a3a9"/>
+              <text x="460" y="157" text-anchor="middle" font-size="10" fill="#fff">送信</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ===== エンジニア向けセクション ===== -->
+      <div class="section-divider">
+        <span class="section-divider-label">👨‍💻 エンジニア向け技術仕様</span>
+      </div>
 
       <!-- Tech Stack -->
       <section id="tech-stack">
@@ -589,6 +886,27 @@ flowchart TB
     GitHub --> CloudBuild
     CloudBuild --> AR
     AR --> CloudRun
+          </div>
+        </div>
+
+        <div class="arch-grid">
+          <div class="arch-box">
+            <div class="arch-box-title">Frontend</div>
+            <div class="arch-box-item">⚛️ Next.js 14 App Router</div>
+            <div class="arch-box-item">🎨 Tailwind CSS</div>
+            <div class="arch-box-item">🌍 next-intl</div>
+          </div>
+          <div class="arch-box">
+            <div class="arch-box-title">Backend</div>
+            <div class="arch-box-item">🔌 API Routes</div>
+            <div class="arch-box-item">🤖 Vertex AI SDK</div>
+            <div class="arch-box-item">🔐 Workload Identity</div>
+          </div>
+          <div class="arch-box">
+            <div class="arch-box-title">Infrastructure</div>
+            <div class="arch-box-item">☁️ Cloud Run</div>
+            <div class="arch-box-item">🔧 Cloud Build</div>
+            <div class="arch-box-item">📦 Artifact Registry</div>
           </div>
         </div>
       </section>
@@ -726,6 +1044,12 @@ npm run type-check
 <span class="comment"># 本番デプロイ</span>
 git push origin main</div>
         </div>
+
+        <h3>本番URL</h3>
+        <div class="info-box">
+          <div class="info-box-title">Production</div>
+          <p><a href="https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app" target="_blank">https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app</a></p>
+        </div>
       </section>
 
     </div>
@@ -765,7 +1089,7 @@ git push origin main</div>
     });
   </script>
 
-  <!-- Smooth scroll -->
+  <!-- Smooth scroll & active nav -->
   <script>
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -780,7 +1104,6 @@ git push origin main</div>
       });
     });
 
-    // Update active nav on scroll
     window.addEventListener('scroll', () => {
       const sections = document.querySelectorAll('section[id]');
       let current = '';
