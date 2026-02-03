@@ -7,6 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Lottie Player -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
     * {
       margin: 0;
@@ -20,6 +22,69 @@
       color: #1a1a1a;
       line-height: 1.8;
       font-size: 15px;
+    }
+
+    /* ===== CSS Animations ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hover-lift {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
     /* Sidebar */
@@ -75,12 +140,13 @@
       text-decoration: none;
       font-size: 14px;
       border-radius: 6px;
-      transition: all 0.15s;
+      transition: all 0.2s ease;
     }
 
     .nav-link:hover {
       background: #f3f4f6;
       color: #1a1a1a;
+      padding-left: 16px;
     }
 
     .nav-link.active {
@@ -156,11 +222,13 @@
       margin-bottom: 32px;
     }
 
-    /* Badge */
+    /* Badge with shimmer */
     .badge {
       display: inline-block;
       padding: 4px 10px;
-      background: #e0f7f8;
+      background: linear-gradient(90deg, #e0f7f8 0%, #b2f0f2 50%, #e0f7f8 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
       color: #00a3a9;
       font-size: 12px;
       font-weight: 500;
@@ -190,6 +258,11 @@
 
     td {
       background: #fff;
+      transition: background 0.2s ease;
+    }
+
+    tr:hover td {
+      background: #f9fafb;
     }
 
     /* Code Block */
@@ -223,7 +296,35 @@
     .code-content .string { color: #4ade80; }
     .code-content .function { color: #60a5fa; }
 
-    /* Visual Cards */
+    /* Hero with Lottie */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-lottie {
+      width: 200px;
+      height: 200px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-lottie {
+        order: -1;
+      }
+    }
+
+    /* Visual Cards with hover */
     .visual-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -243,9 +344,26 @@
       border-radius: 12px;
       padding: 24px;
       text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .visual-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 163, 169, 0.15);
+      border-color: #00a3a9;
+    }
+
+    .visual-card:hover .visual-card-icon {
+      animation: float 2s ease-in-out infinite;
     }
 
     .visual-card-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+    }
+
+    .visual-card-lottie {
       width: 80px;
       height: 80px;
       margin: 0 auto 16px;
@@ -264,7 +382,7 @@
       line-height: 1.6;
     }
 
-    /* Stats Row */
+    /* Stats Row with count animation */
     .stats-row {
       display: flex;
       justify-content: space-around;
@@ -272,11 +390,26 @@
       border-radius: 12px;
       padding: 32px 16px;
       margin: 24px 0 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats-row::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
     }
 
     .stat-item {
       text-align: center;
       color: #fff;
+      position: relative;
+      z-index: 1;
     }
 
     .stat-value {
@@ -285,13 +418,17 @@
       line-height: 1;
     }
 
+    .stat-value.count-up {
+      animation: countUp 0.8s ease forwards;
+    }
+
     .stat-label {
       font-size: 13px;
       margin-top: 8px;
       opacity: 0.9;
     }
 
-    /* Language Flags */
+    /* Language Flags with hover */
     .lang-flags {
       display: flex;
       justify-content: center;
@@ -305,6 +442,17 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .lang-flag-item:hover {
+      transform: scale(1.1);
+    }
+
+    .lang-flag-item:hover .lang-flag-circle {
+      box-shadow: 0 8px 20px rgba(0, 163, 169, 0.3);
+      border-color: #00a3a9;
     }
 
     .lang-flag-circle {
@@ -317,6 +465,7 @@
       font-size: 32px;
       background: #fff;
       border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
     }
 
     .lang-flag-name {
@@ -361,6 +510,16 @@
       padding: 24px 20px;
       text-align: center;
       position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover {
+      border-color: #00a3a9;
+      box-shadow: 0 10px 30px rgba(0, 163, 169, 0.1);
+    }
+
+    .step-card:hover .step-number {
+      transform: scale(1.1);
     }
 
     .step-card::after {
@@ -370,7 +529,12 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 24px;
-      color: #d1d5db;
+      color: #00a3a9;
+      transition: transform 0.3s ease;
+    }
+
+    .step-card:hover::after {
+      transform: translateY(-50%) translateX(5px);
     }
 
     .step-card:last-child::after {
@@ -399,6 +563,7 @@
       font-weight: 700;
       font-size: 18px;
       margin: 0 auto 12px;
+      transition: transform 0.3s ease;
     }
 
     .step-title {
@@ -420,6 +585,11 @@
       border-radius: 8px;
       padding: 16px 20px;
       margin: 16px 0 24px;
+      transition: all 0.3s ease;
+    }
+
+    .info-box:hover {
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
     }
 
     .info-box-title {
@@ -435,13 +605,51 @@
       margin: 0;
     }
 
-    /* Page Flow Visual */
+    /* Page Flow with Canvas */
     .page-flow {
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
       padding: 32px;
       margin: 24px 0 32px;
+    }
+
+    .canvas-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    #pageFlowCanvas {
+      max-width: 100%;
+      cursor: pointer;
+    }
+
+    /* Interactive Demo */
+    .interactive-demo {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0 32px;
+      text-align: center;
+    }
+
+    .demo-title {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .demo-canvas-container {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 16px;
+      display: inline-block;
+    }
+
+    #particleCanvas {
+      border-radius: 4px;
     }
 
     /* Mermaid */
@@ -478,6 +686,12 @@
       border: 1px solid #e5e7eb;
       border-radius: 8px;
       padding: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .arch-box:hover {
+      border-color: #00a3a9;
+      box-shadow: 0 4px 12px rgba(0, 163, 169, 0.1);
     }
 
     .arch-box-title {
@@ -498,6 +712,12 @@
       border-radius: 4px;
       margin-bottom: 8px;
       font-size: 13px;
+      transition: all 0.2s ease;
+    }
+
+    .arch-box-item:hover {
+      background: #e0f7f8;
+      transform: translateX(4px);
     }
 
     .arch-box-item:last-child {
@@ -557,20 +777,33 @@
 
       <!-- ===== 一般向けセクション ===== -->
 
-      <!-- Overview -->
+      <!-- Overview with Lottie -->
       <section id="overview">
-        <span class="badge">社内ドキュメント</span>
-        <h1>skilled-worker-jp</h1>
-        <p class="lead">特定技能外国人向けの求職者登録サイトです。日本で働きたい外国人の方をサポートします。</p>
+        <div class="hero-section">
+          <div class="hero-content">
+            <span class="badge">社内ドキュメント</span>
+            <h1>skilled-worker-jp</h1>
+            <p class="lead">特定技能外国人向けの求職者登録サイトです。日本で働きたい外国人の方をサポートします。</p>
+          </div>
+          <div class="hero-lottie">
+            <lottie-player
+              src="https://lottie.host/7f9c4e54-79cb-4335-8f82-f69a12d4b0e6/nqGvQMt9P4.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
+          </div>
+        </div>
 
         <!-- Stats -->
-        <div class="stats-row">
+        <div class="stats-row animate-on-scroll">
           <div class="stat-item">
-            <div class="stat-value">5</div>
+            <div class="stat-value" data-count="5">0</div>
             <div class="stat-label">対応言語</div>
           </div>
           <div class="stat-item">
-            <div class="stat-value">3</div>
+            <div class="stat-value" data-count="3">0</div>
             <div class="stat-label">登録ステップ</div>
           </div>
           <div class="stat-item">
@@ -589,46 +822,46 @@
         </div>
       </section>
 
-      <!-- Features -->
+      <!-- Features with Lottie -->
       <section id="features">
         <h2>3つの特徴</h2>
 
         <div class="visual-cards">
-          <div class="visual-card">
-            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
-              <circle cx="40" cy="28" r="12" fill="#00a3a9"/>
-              <path d="M20 60c0-11 9-20 20-20s20 9 20 20" fill="#00a3a9"/>
-              <circle cx="58" cy="22" r="8" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
-              <text x="58" y="26" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">5</text>
-            </svg>
+          <div class="visual-card hover-lift animate-on-scroll">
+            <lottie-player
+              class="visual-card-lottie"
+              src="https://lottie.host/e3c6cc07-c7c5-4af6-a6ed-b0e3c9e3b3c1/BHuCdC0jfZ.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
             <div class="visual-card-title">多言語対応</div>
             <div class="visual-card-desc">日本語・英語・インドネシア語・ネパール語・ビルマ語の5言語に対応。母国語で安心して利用できます。</div>
           </div>
 
-          <div class="visual-card">
-            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
-              <rect x="22" y="20" width="36" height="44" rx="4" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
-              <line x1="28" y1="30" x2="52" y2="30" stroke="#00a3a9" stroke-width="2"/>
-              <line x1="28" y1="38" x2="52" y2="38" stroke="#00a3a9" stroke-width="2"/>
-              <line x1="28" y1="46" x2="44" y2="46" stroke="#00a3a9" stroke-width="2"/>
-              <circle cx="52" cy="54" r="8" fill="#00a3a9"/>
-              <path d="M49 54l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+          <div class="visual-card hover-lift animate-on-scroll">
+            <lottie-player
+              class="visual-card-lottie"
+              src="https://lottie.host/eb8e2c5a-e7e4-4e11-9c4f-62c2f9e3b8c0/PUkzHjF8Nh.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
             <div class="visual-card-title">かんたん登録</div>
             <div class="visual-card-desc">わずか3ステップで登録完了。基本情報・在留資格・連絡先を入力するだけ。約3分で完了します。</div>
           </div>
 
-          <div class="visual-card">
-            <svg class="visual-card-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="40" cy="40" r="38" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
-              <rect x="18" y="24" width="44" height="36" rx="6" fill="#fff" stroke="#00a3a9" stroke-width="2"/>
-              <circle cx="32" cy="38" r="6" fill="#00a3a9"/>
-              <rect x="42" y="34" width="14" height="3" rx="1.5" fill="#00a3a9"/>
-              <rect x="42" y="40" width="10" height="3" rx="1.5" fill="#d1d5db"/>
-              <rect x="24" y="50" width="32" height="4" rx="2" fill="#00a3a9"/>
-            </svg>
+          <div class="visual-card hover-lift animate-on-scroll">
+            <lottie-player
+              class="visual-card-lottie"
+              src="https://lottie.host/3b1d99f1-c2bf-4d5f-a48f-4f7e77c75c7e/R6fM5IzP7K.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
             <div class="visual-card-title">AIチャット</div>
             <div class="visual-card-desc">特定技能ビザや就職に関する疑問をAIが24時間サポート。母国語で気軽に質問できます。</div>
           </div>
@@ -640,7 +873,7 @@
         <h2>対応言語</h2>
         <p>ユーザーは自分の言語でサイトを利用できます。</p>
 
-        <div class="lang-flags">
+        <div class="lang-flags animate-on-scroll">
           <div class="lang-flag-item">
             <div class="lang-flag-circle">🇯🇵</div>
             <div class="lang-flag-name">日本語</div>
@@ -669,10 +902,10 @@
         <h2>利用の流れ</h2>
         <p>登録から就職までの全体フローです。</p>
 
-        <div class="flow-diagram">
+        <div class="flow-diagram animate-on-scroll">
           <svg class="flow-svg" viewBox="0 0 700 120" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- Step 1 -->
-            <g>
+            <g class="flow-step" style="animation: fadeInUp 0.5s ease forwards;">
               <circle cx="80" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
               <text x="80" y="45" text-anchor="middle" font-size="24">📝</text>
               <text x="80" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 1</text>
@@ -683,10 +916,12 @@
             <path d="M130 50 L190 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
               <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
             </path>
-            <polygon points="190,45 200,50 190,55" fill="#00a3a9"/>
+            <polygon points="190,45 200,50 190,55" fill="#00a3a9">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+            </polygon>
 
             <!-- Step 2 -->
-            <g>
+            <g class="flow-step" style="animation: fadeInUp 0.5s ease 0.2s forwards; opacity: 0;">
               <circle cx="260" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
               <text x="260" y="45" text-anchor="middle" font-size="24">💬</text>
               <text x="260" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 2</text>
@@ -697,10 +932,12 @@
             <path d="M310 50 L370 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
               <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
             </path>
-            <polygon points="370,45 380,50 370,55" fill="#00a3a9"/>
+            <polygon points="370,45 380,50 370,55" fill="#00a3a9">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+            </polygon>
 
             <!-- Step 3 -->
-            <g>
+            <g class="flow-step" style="animation: fadeInUp 0.5s ease 0.4s forwards; opacity: 0;">
               <circle cx="440" cy="50" r="40" fill="#e0f7f8" stroke="#00a3a9" stroke-width="2"/>
               <text x="440" y="45" text-anchor="middle" font-size="24">🔍</text>
               <text x="440" y="62" text-anchor="middle" font-size="10" fill="#00a3a9" font-weight="bold">STEP 3</text>
@@ -711,10 +948,12 @@
             <path d="M490 50 L550 50" stroke="#00a3a9" stroke-width="2" stroke-dasharray="6 4">
               <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite"/>
             </path>
-            <polygon points="550,45 560,50 550,55" fill="#00a3a9"/>
+            <polygon points="550,45 560,50 550,55" fill="#00a3a9">
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="1s" repeatCount="indefinite"/>
+            </polygon>
 
             <!-- Step 4 -->
-            <g>
+            <g class="flow-step" style="animation: fadeInUp 0.5s ease 0.6s forwards; opacity: 0;">
               <circle cx="620" cy="50" r="40" fill="#00a3a9" stroke="#00a3a9" stroke-width="2"/>
               <text x="620" y="45" text-anchor="middle" font-size="24">🎉</text>
               <text x="620" y="62" text-anchor="middle" font-size="10" fill="#fff" font-weight="bold">GOAL</text>
@@ -730,17 +969,17 @@
         <p>サイトでの登録は3ステップで完了します。</p>
 
         <div class="step-cards">
-          <div class="step-card">
+          <div class="step-card animate-on-scroll">
             <div class="step-number">1</div>
             <div class="step-title">基本情報</div>
             <div class="step-desc">氏名・生年月日<br>性別・国籍</div>
           </div>
-          <div class="step-card">
+          <div class="step-card animate-on-scroll">
             <div class="step-number">2</div>
             <div class="step-title">在留資格・スキル</div>
             <div class="step-desc">在留資格・期限<br>日本語レベル・希望職種</div>
           </div>
-          <div class="step-card">
+          <div class="step-card animate-on-scroll">
             <div class="step-number">3</div>
             <div class="step-title">連絡先</div>
             <div class="step-desc">LINE ID等の連絡先<br>→ 登録完了！</div>
@@ -748,53 +987,23 @@
         </div>
       </section>
 
-      <!-- Pages -->
+      <!-- Pages with Canvas -->
       <section id="pages">
         <h2>ページ構成</h2>
-        <p>サイトは2つのメインページで構成されています。</p>
+        <p>サイトは2つのメインページで構成されています。クリックで操作できます。</p>
 
-        <div class="page-flow">
-          <svg width="100%" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- LP Page -->
-            <g>
-              <rect x="40" y="20" width="200" height="160" rx="8" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
-              <rect x="40" y="20" width="200" height="30" rx="8" fill="#00a3a9"/>
-              <rect x="40" y="42" width="200" height="8" fill="#00a3a9"/>
-              <text x="140" y="40" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">トップページ (LP)</text>
+        <div class="page-flow animate-on-scroll">
+          <div class="canvas-container">
+            <canvas id="pageFlowCanvas" width="600" height="220"></canvas>
+          </div>
+        </div>
 
-              <!-- LP Content -->
-              <rect x="55" y="65" width="170" height="20" rx="2" fill="#f3f4f6"/>
-              <rect x="55" y="90" width="80" height="8" rx="2" fill="#e5e7eb"/>
-              <rect x="55" y="102" width="120" height="8" rx="2" fill="#e5e7eb"/>
-              <rect x="55" y="120" width="170" height="25" rx="4" fill="#00a3a9"/>
-              <text x="140" y="137" text-anchor="middle" font-size="10" fill="#fff">登録ボタン</text>
-              <rect x="55" y="155" width="50" height="15" rx="2" fill="#e0f7f8"/>
-              <text x="80" y="166" text-anchor="middle" font-size="8" fill="#00a3a9">チャット</text>
-            </g>
-
-            <!-- Arrow -->
-            <g>
-              <path d="M260 100 L320 100" stroke="#00a3a9" stroke-width="2"/>
-              <polygon points="320,95 335,100 320,105" fill="#00a3a9"/>
-              <text x="290" y="90" text-anchor="middle" font-size="10" fill="#6b7280">クリック</text>
-            </g>
-
-            <!-- Register Page -->
-            <g>
-              <rect x="360" y="20" width="200" height="160" rx="8" fill="#fff" stroke="#e5e7eb" stroke-width="2"/>
-              <rect x="360" y="20" width="200" height="30" rx="8" fill="#00a3a9"/>
-              <rect x="360" y="42" width="200" height="8" fill="#00a3a9"/>
-              <text x="460" y="40" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">登録フォーム</text>
-
-              <!-- Form Content -->
-              <text x="375" y="75" font-size="10" fill="#6b7280">Step 1 → 2 → 3</text>
-              <rect x="375" y="85" width="170" height="12" rx="2" fill="#f3f4f6"/>
-              <rect x="375" y="102" width="170" height="12" rx="2" fill="#f3f4f6"/>
-              <rect x="375" y="119" width="170" height="12" rx="2" fill="#f3f4f6"/>
-              <rect x="375" y="140" width="170" height="25" rx="4" fill="#00a3a9"/>
-              <text x="460" y="157" text-anchor="middle" font-size="10" fill="#fff">送信</text>
-            </g>
-          </svg>
+        <!-- Interactive Particle Demo -->
+        <div class="interactive-demo animate-on-scroll">
+          <div class="demo-title">✨ インタラクティブデモ - マウスを動かしてみてください</div>
+          <div class="demo-canvas-container">
+            <canvas id="particleCanvas" width="400" height="150"></canvas>
+          </div>
         </div>
       </section>
 
@@ -855,7 +1064,7 @@
       <section id="architecture">
         <h2>システムアーキテクチャ</h2>
 
-        <div class="mermaid-wrapper">
+        <div class="mermaid-wrapper animate-on-scroll">
           <div class="mermaid">
 flowchart TB
     subgraph Client
@@ -890,19 +1099,19 @@ flowchart TB
         </div>
 
         <div class="arch-grid">
-          <div class="arch-box">
+          <div class="arch-box animate-on-scroll">
             <div class="arch-box-title">Frontend</div>
             <div class="arch-box-item">⚛️ Next.js 14 App Router</div>
             <div class="arch-box-item">🎨 Tailwind CSS</div>
             <div class="arch-box-item">🌍 next-intl</div>
           </div>
-          <div class="arch-box">
+          <div class="arch-box animate-on-scroll">
             <div class="arch-box-title">Backend</div>
             <div class="arch-box-item">🔌 API Routes</div>
             <div class="arch-box-item">🤖 Vertex AI SDK</div>
             <div class="arch-box-item">🔐 Workload Identity</div>
           </div>
-          <div class="arch-box">
+          <div class="arch-box animate-on-scroll">
             <div class="arch-box-title">Infrastructure</div>
             <div class="arch-box-item">☁️ Cloud Run</div>
             <div class="arch-box-item">🔧 Cloud Build</div>
@@ -915,7 +1124,7 @@ flowchart TB
       <section id="request-flow">
         <h2>リクエストフロー</h2>
 
-        <div class="mermaid-wrapper">
+        <div class="mermaid-wrapper animate-on-scroll">
           <div class="mermaid">
 sequenceDiagram
     participant U as User
@@ -1018,7 +1227,7 @@ GOOGLE_APPLICATION_CREDENTIALS=./service-account.json</div>
         <h2>デプロイ</h2>
 
         <h3>デプロイフロー</h3>
-        <div class="mermaid-wrapper">
+        <div class="mermaid-wrapper animate-on-scroll">
           <div class="mermaid">
 flowchart LR
     A[git push] --> B[Cloud Build]
@@ -1089,8 +1298,299 @@ git push origin main</div>
     });
   </script>
 
-  <!-- Smooth scroll & active nav -->
+  <!-- Canvas: Page Flow Diagram -->
   <script>
+    const canvas = document.getElementById('pageFlowCanvas');
+    const ctx = canvas.getContext('2d');
+    let hoverState = { lp: false, arrow: false, register: false };
+
+    function drawPageFlow() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // LP Page
+      ctx.fillStyle = hoverState.lp ? '#e0f7f8' : '#fff';
+      ctx.strokeStyle = hoverState.lp ? '#00a3a9' : '#e5e7eb';
+      ctx.lineWidth = 2;
+      roundRect(ctx, 40, 20, 180, 160, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      // LP Header
+      ctx.fillStyle = '#00a3a9';
+      roundRectTop(ctx, 40, 20, 180, 30, 8);
+      ctx.fill();
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 12px Noto Sans JP';
+      ctx.textAlign = 'center';
+      ctx.fillText('トップページ (LP)', 130, 40);
+
+      // LP Content
+      ctx.fillStyle = '#f3f4f6';
+      roundRect(ctx, 55, 60, 150, 20, 4);
+      ctx.fill();
+
+      ctx.fillStyle = '#e5e7eb';
+      roundRect(ctx, 55, 90, 80, 8, 2);
+      ctx.fill();
+      roundRect(ctx, 55, 105, 120, 8, 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#00a3a9';
+      roundRect(ctx, 55, 125, 150, 25, 4);
+      ctx.fill();
+
+      ctx.fillStyle = '#fff';
+      ctx.font = '10px Noto Sans JP';
+      ctx.fillText('登録ボタン', 130, 142);
+
+      ctx.fillStyle = '#e0f7f8';
+      roundRect(ctx, 55, 160, 50, 15, 2);
+      ctx.fill();
+      ctx.fillStyle = '#00a3a9';
+      ctx.font = '8px Noto Sans JP';
+      ctx.fillText('チャット', 80, 171);
+
+      // Arrow
+      ctx.strokeStyle = hoverState.arrow ? '#00a3a9' : '#9ca3af';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(240, 100);
+      ctx.lineTo(320, 100);
+      ctx.stroke();
+
+      ctx.fillStyle = hoverState.arrow ? '#00a3a9' : '#9ca3af';
+      ctx.beginPath();
+      ctx.moveTo(320, 95);
+      ctx.lineTo(335, 100);
+      ctx.lineTo(320, 105);
+      ctx.fill();
+
+      ctx.fillStyle = '#6b7280';
+      ctx.font = '10px Noto Sans JP';
+      ctx.fillText('クリック', 280, 90);
+
+      // Register Page
+      ctx.fillStyle = hoverState.register ? '#e0f7f8' : '#fff';
+      ctx.strokeStyle = hoverState.register ? '#00a3a9' : '#e5e7eb';
+      ctx.lineWidth = 2;
+      roundRect(ctx, 360, 20, 180, 160, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      // Register Header
+      ctx.fillStyle = '#00a3a9';
+      roundRectTop(ctx, 360, 20, 180, 30, 8);
+      ctx.fill();
+
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 12px Noto Sans JP';
+      ctx.fillText('登録フォーム', 450, 40);
+
+      // Form Content
+      ctx.fillStyle = '#6b7280';
+      ctx.font = '10px Noto Sans JP';
+      ctx.textAlign = 'left';
+      ctx.fillText('Step 1 → 2 → 3', 375, 70);
+
+      ctx.fillStyle = '#f3f4f6';
+      roundRect(ctx, 375, 80, 150, 12, 2);
+      ctx.fill();
+      roundRect(ctx, 375, 100, 150, 12, 2);
+      ctx.fill();
+      roundRect(ctx, 375, 120, 150, 12, 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#00a3a9';
+      roundRect(ctx, 375, 145, 150, 25, 4);
+      ctx.fill();
+
+      ctx.fillStyle = '#fff';
+      ctx.font = '10px Noto Sans JP';
+      ctx.textAlign = 'center';
+      ctx.fillText('送信', 450, 162);
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    function roundRectTop(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h);
+      ctx.lineTo(x, y + h);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      hoverState.lp = x >= 40 && x <= 220 && y >= 20 && y <= 180;
+      hoverState.register = x >= 360 && x <= 540 && y >= 20 && y <= 180;
+      hoverState.arrow = x >= 240 && x <= 335 && y >= 80 && y <= 120;
+
+      canvas.style.cursor = (hoverState.lp || hoverState.register || hoverState.arrow) ? 'pointer' : 'default';
+      drawPageFlow();
+    });
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+
+      if (x >= 40 && x <= 220) {
+        window.open('https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app/ja', '_blank');
+      } else if (x >= 360 && x <= 540) {
+        window.open('https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app/ja/register', '_blank');
+      }
+    });
+
+    drawPageFlow();
+  </script>
+
+  <!-- Canvas: Particle Animation -->
+  <script>
+    const particleCanvas = document.getElementById('particleCanvas');
+    const pctx = particleCanvas.getContext('2d');
+    const particles = [];
+    let mouseX = 200;
+    let mouseY = 75;
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * particleCanvas.width;
+        this.y = Math.random() * particleCanvas.height;
+        this.size = Math.random() * 4 + 1;
+        this.speedX = (Math.random() - 0.5) * 2;
+        this.speedY = (Math.random() - 0.5) * 2;
+        this.color = `hsl(${175 + Math.random() * 20}, 80%, ${50 + Math.random() * 20}%)`;
+      }
+
+      update() {
+        const dx = mouseX - this.x;
+        const dy = mouseY - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 80) {
+          const force = (80 - dist) / 80;
+          this.speedX += dx * force * 0.02;
+          this.speedY += dy * force * 0.02;
+        }
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        this.speedX *= 0.98;
+        this.speedY *= 0.98;
+
+        if (this.x < 0 || this.x > particleCanvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > particleCanvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        pctx.beginPath();
+        pctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pctx.fillStyle = this.color;
+        pctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 50; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      pctx.fillStyle = 'rgba(15, 23, 42, 0.2)';
+      pctx.fillRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      // Draw connections
+      particles.forEach((p1, i) => {
+        particles.slice(i + 1).forEach(p2 => {
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 60) {
+            pctx.beginPath();
+            pctx.moveTo(p1.x, p1.y);
+            pctx.lineTo(p2.x, p2.y);
+            pctx.strokeStyle = `rgba(0, 196, 204, ${1 - dist / 60})`;
+            pctx.lineWidth = 0.5;
+            pctx.stroke();
+          }
+        });
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    particleCanvas.addEventListener('mousemove', (e) => {
+      const rect = particleCanvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+
+    animateParticles();
+  </script>
+
+  <!-- Scroll Animation & Count Up -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Count up animation for stats
+          const countElements = entry.target.querySelectorAll('[data-count]');
+          countElements.forEach(el => {
+            const target = parseInt(el.dataset.count);
+            let current = 0;
+            const increment = target / 20;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                el.textContent = target;
+                clearInterval(timer);
+              } else {
+                el.textContent = Math.floor(current);
+              }
+            }, 50);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll & active nav
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
