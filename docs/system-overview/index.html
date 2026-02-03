@@ -3,30 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>skilled-worker-jp | System Overview</title>
+  <title>skilled-worker-jp システム概要</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #00C4CC;
-      --primary-dark: #00A3A9;
-      --dark: #0F172A;
-      --darker: #020617;
-      --surface: #1E293B;
-      --surface-light: #334155;
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
-      --accent-orange: #F97316;
-      --accent-purple: #A855F7;
-      --accent-green: #22C55E;
-      --accent-blue: #3B82F6;
-      --gradient-1: linear-gradient(135deg, #00C4CC 0%, #00A3A9 50%, #0891B2 100%);
-      --gradient-2: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-      --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -34,390 +15,301 @@
     }
 
     body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: var(--darker);
-      color: var(--text);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8f9fa;
+      color: #1a1a1a;
       line-height: 1.8;
-      overflow-x: hidden;
+      font-size: 15px;
     }
 
-    /* Noise overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: var(--noise);
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    /* Navigation */
-    .nav {
+    /* Sidebar */
+    .sidebar {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1rem 2rem;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      width: 260px;
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid #e5e7eb;
+      padding: 24px 0;
+      overflow-y: auto;
     }
 
-    .nav-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 16px;
     }
 
-    .logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
+    .sidebar-title {
+      font-size: 16px;
       font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: #00a3a9;
     }
 
-    .logo svg {
-      width: 32px;
-      height: 32px;
+    .sidebar-subtitle {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
     }
 
-    .nav-tabs {
-      display: flex;
-      gap: 0.5rem;
-      background: var(--surface);
-      padding: 0.25rem;
-      border-radius: 12px;
+    .nav-section {
+      padding: 0 12px;
+      margin-bottom: 20px;
     }
 
-    .nav-tab {
-      padding: 0.5rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: none;
-      background: transparent;
-    }
-
-    .nav-tab:hover {
-      color: var(--text);
-    }
-
-    .nav-tab.active {
-      background: var(--primary);
-      color: var(--dark);
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-      opacity: 0.1;
-      top: -200px;
-      right: -200px;
-      animation: pulse 8s ease-in-out infinite;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
-      opacity: 0.08;
-      bottom: -100px;
-      left: -100px;
-      animation: pulse 10s ease-in-out infinite reverse;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(0, 196, 204, 0.1);
-      border: 1px solid rgba(0, 196, 204, 0.3);
-      border-radius: 100px;
-      font-size: 0.875rem;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      animation: fadeInUp 0.8s ease;
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--accent-green);
-      border-radius: 50%;
-      animation: blink 2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
+    .nav-section-title {
+      font-size: 11px;
       font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 0.8s ease 0.1s backwards;
-    }
-
-    .hero h1 span {
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin-bottom: 3rem;
-      animation: fadeInUp 0.8s ease 0.2s backwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Tech Stack Pills */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      animation: fadeInUp 0.8s ease 0.3s backwards;
-    }
-
-    .tech-pill {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--surface);
-      border: 1px solid var(--surface-light);
-      border-radius: 100px;
-      font-size: 0.875rem;
-      transition: all 0.3s ease;
-    }
-
-    .tech-pill:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    .tech-pill img {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Sections */
-    .section {
-      padding: 6rem 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      display: none;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      color: #9ca3af;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--primary);
-      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      padding: 8px;
+      margin-bottom: 4px;
     }
 
-    .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+    .nav-link {
+      display: block;
+      padding: 8px 12px;
+      color: #4b5563;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 6px;
+      transition: all 0.15s;
     }
 
-    .section-desc {
-      color: var(--text-muted);
-      max-width: 600px;
+    .nav-link:hover {
+      background: #f3f4f6;
+      color: #1a1a1a;
+    }
+
+    .nav-link.active {
+      background: #e0f7f8;
+      color: #00a3a9;
+      font-weight: 500;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 260px;
+      min-height: 100vh;
+    }
+
+    .content {
+      max-width: 900px;
       margin: 0 auto;
+      padding: 40px;
     }
+
+    /* Typography */
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #00a3a9;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #374151;
+      margin: 24px 0 12px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #4b5563;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 32px;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #e0f7f8;
+      color: #00a3a9;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    td {
+      background: #fff;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: #1e293b;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 16px 0 24px;
+    }
+
+    .code-header {
+      background: #334155;
+      padding: 8px 16px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .code-content {
+      padding: 16px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    .code-content .comment { color: #64748b; }
+    .code-content .keyword { color: #c084fc; }
+    .code-content .string { color: #4ade80; }
+    .code-content .function { color: #60a5fa; }
 
     /* Cards Grid */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 16px 0 24px;
     }
 
     .card {
-      background: var(--surface);
-      border: 1px solid var(--surface-light);
-      border-radius: 20px;
-      padding: 2rem;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-1);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 196, 204, 0.3);
-    }
-
-    .card:hover::before {
-      transform: scaleX(1);
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
     }
 
     .card-icon {
-      width: 56px;
-      height: 56px;
-      background: rgba(0, 196, 204, 0.1);
-      border-radius: 16px;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Language Pills */
+    .lang-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 24px;
+    }
+
+    .lang-pill {
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      font-size: 14px;
     }
 
-    .card-icon svg {
-      width: 28px;
-      height: 28px;
-      color: var(--primary);
+    .lang-pill code {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 12px;
+      color: #6b7280;
     }
 
-    .card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
+    /* Steps */
+    .steps {
+      margin: 16px 0 24px;
     }
 
-    .card p {
-      color: var(--text-muted);
-      font-size: 0.9375rem;
-    }
-
-    /* Flow Section */
-    .flow-container {
-      background: var(--surface);
-      border-radius: 24px;
-      padding: 3rem;
-      border: 1px solid var(--surface-light);
-    }
-
-    .flow-steps {
+    .step {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #f3f4f6;
     }
 
-    .flow-step {
-      display: flex;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--surface-light);
-      position: relative;
-    }
-
-    .flow-step:last-child {
+    .step:last-child {
       border-bottom: none;
     }
 
-    .flow-number {
-      width: 48px;
-      height: 48px;
-      background: var(--gradient-1);
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: #00a3a9;
+      color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.25rem;
-      color: var(--dark);
+      font-size: 14px;
       flex-shrink: 0;
     }
 
-    .flow-content h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.125rem;
+    .step-content h4 {
+      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 4px;
     }
 
-    .flow-content p {
-      color: var(--text-muted);
+    .step-content p {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0;
     }
 
-    /* Mermaid Diagrams */
-    .mermaid-container {
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid var(--surface-light);
-      margin: 2rem 0;
+    /* Mermaid */
+    .mermaid-wrapper {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 16px 0 24px;
       overflow-x: auto;
     }
 
@@ -426,590 +318,266 @@
       justify-content: center;
     }
 
-    /* Architecture Grid */
-    .arch-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .arch-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .arch-layer {
-      background: var(--surface);
-      border: 1px solid var(--surface-light);
-      border-radius: 16px;
-      padding: 1.5rem;
-    }
-
-    .arch-layer-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .arch-items {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .arch-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      background: rgba(0,0,0,0.2);
+    /* Info Box */
+    .info-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
       border-radius: 8px;
-      font-size: 0.875rem;
+      padding: 16px 20px;
+      margin: 16px 0 24px;
     }
 
-    .arch-item-icon {
-      width: 32px;
-      height: 32px;
-      background: rgba(0, 196, 204, 0.1);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
-
-    /* Code Block */
-    .code-block {
-      background: var(--darker);
-      border: 1px solid var(--surface-light);
-      border-radius: 12px;
-      overflow: hidden;
-      margin: 1.5rem 0;
-    }
-
-    .code-header {
-      background: var(--surface);
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--surface-light);
-    }
-
-    .code-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .code-dot.red { background: #EF4444; }
-    .code-dot.yellow { background: #EAB308; }
-    .code-dot.green { background: #22C55E; }
-
-    .code-title {
-      margin-left: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .code-content {
-      padding: 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.875rem;
-      line-height: 1.7;
-      overflow-x: auto;
-    }
-
-    .code-content .comment { color: #6B7280; }
-    .code-content .keyword { color: #A855F7; }
-    .code-content .string { color: #22C55E; }
-    .code-content .function { color: #3B82F6; }
-    .code-content .variable { color: #F97316; }
-
-    /* SVG Animation */
-    .svg-container {
-      display: flex;
-      justify-content: center;
-      padding: 3rem;
-      background: var(--surface);
-      border-radius: 20px;
-      border: 1px solid var(--surface-light);
-      margin: 2rem 0;
-    }
-
-    .animated-diagram {
-      max-width: 100%;
-    }
-
-    /* Language Grid */
-    .lang-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .lang-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    .lang-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-light);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .lang-card:hover {
-      border-color: var(--primary);
-      transform: scale(1.05);
-    }
-
-    .lang-flag {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .lang-name {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .lang-code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.625rem;
-      color: var(--primary);
-      margin-top: 0.25rem;
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin: 2rem 0;
-    }
-
-    @media (max-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--surface-light);
-      border-radius: 16px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .stat-value {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: var(--gradient-1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .stat-label {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    /* Feature Table */
-    .feature-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 2rem 0;
-    }
-
-    .feature-table th,
-    .feature-table td {
-      padding: 1rem;
-      text-align: left;
-      border-bottom: 1px solid var(--surface-light);
-    }
-
-    .feature-table th {
-      background: var(--surface);
-      font-family: 'Space Grotesk', sans-serif;
+    .info-box-title {
+      font-size: 14px;
       font-weight: 600;
-      color: var(--primary);
+      color: #1e40af;
+      margin-bottom: 8px;
     }
 
-    .feature-table td {
-      background: rgba(30, 41, 59, 0.5);
-    }
-
-    .feature-table tr:hover td {
-      background: var(--surface);
-    }
-
-    /* Footer */
-    .footer {
-      padding: 3rem 2rem;
-      text-align: center;
-      border-top: 1px solid var(--surface-light);
-      margin-top: 4rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary);
-    }
-
-    .footer-copy {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .info-box p {
+      font-size: 14px;
+      color: #1e40af;
+      margin: 0;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .nav-tabs {
+    @media (max-width: 900px) {
+      .sidebar {
         display: none;
       }
-
-      .hero h1 {
-        font-size: 2rem;
+      .main {
+        margin-left: 0;
       }
-
-      .section {
-        padding: 3rem 1rem;
-      }
-
-      .flow-step {
-        flex-direction: column;
-        gap: 1rem;
+      .content {
+        padding: 24px 16px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#" class="logo">
-        <svg viewBox="0 0 32 32" fill="none">
-          <rect width="32" height="32" rx="8" fill="currentColor"/>
-          <path d="M8 16L14 22L24 10" stroke="#0F172A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        skilled-worker-jp
-      </a>
-      <div class="nav-tabs">
-        <button class="nav-tab active" data-tab="simple">かんたん説明</button>
-        <button class="nav-tab" data-tab="engineer">エンジニア向け</button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="hero-badge">
-      Production Ready
-    </div>
-    <h1>
-      <span>skilled-worker-jp</span><br>
-      System Overview
-    </h1>
-    <p class="hero-subtitle">
-      特定技能外国人向け人材募集サイトのシステム構成と技術仕様
-    </p>
-    <div class="tech-stack">
-      <div class="tech-pill">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js">
-        Next.js 14
-      </div>
-      <div class="tech-pill">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
-        TypeScript
-      </div>
-      <div class="tech-pill">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP">
-        Google Cloud
-      </div>
-      <div class="tech-pill">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind">
-        Tailwind CSS
-      </div>
-    </div>
-  </section>
-
-  <!-- Simple Section (Non-Engineers) -->
-  <section class="section active" id="simple">
-    <div class="section-header">
-      <div class="section-label">For Everyone</div>
-      <h2 class="section-title">このサイトでできること</h2>
-      <p class="section-desc">日本で働きたい外国人の方を支援するサービスです</p>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">skilled-worker-jp</div>
+      <div class="sidebar-subtitle">System Documentation</div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value">5</div>
-        <div class="stat-label">対応言語</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">3</div>
-        <div class="stat-label">登録ステップ</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">24/7</div>
-        <div class="stat-label">AIチャット</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">0円</div>
-        <div class="stat-label">利用料金</div>
-      </div>
-    </div>
+    <nav class="nav-section">
+      <div class="nav-section-title">概要</div>
+      <a href="#overview" class="nav-link active">プロジェクト概要</a>
+      <a href="#features" class="nav-link">主要機能</a>
+      <a href="#languages" class="nav-link">対応言語</a>
+    </nav>
 
-    <!-- Main Features -->
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-          </svg>
+    <nav class="nav-section">
+      <div class="nav-section-title">一般向け</div>
+      <a href="#user-flow" class="nav-link">利用の流れ</a>
+      <a href="#registration" class="nav-link">登録ステップ</a>
+    </nav>
+
+    <nav class="nav-section">
+      <div class="nav-section-title">技術仕様</div>
+      <a href="#tech-stack" class="nav-link">技術スタック</a>
+      <a href="#architecture" class="nav-link">アーキテクチャ</a>
+      <a href="#request-flow" class="nav-link">リクエストフロー</a>
+      <a href="#directory" class="nav-link">ディレクトリ構造</a>
+      <a href="#api" class="nav-link">API実装</a>
+      <a href="#deploy" class="nav-link">デプロイ</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="content">
+
+      <!-- Overview -->
+      <section id="overview">
+        <span class="badge">Internal Documentation</span>
+        <h1>skilled-worker-jp システム概要</h1>
+        <p class="lead">特定技能外国人向け人材募集サイトのシステム構成と技術仕様をまとめたドキュメントです。</p>
+
+        <div class="info-box">
+          <div class="info-box-title">運営会社</div>
+          <p>あおぞらケアグループ - 鹿児島・福岡で50以上の介護・福祉施設を運営</p>
         </div>
-        <h3>5言語対応</h3>
-        <p>日本語・英語・インドネシア語・ネパール語・ビルマ語に対応。母国語でストレスなく利用できます。</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
-        </div>
-        <h3>かんたん登録</h3>
-        <p>3ステップで求職者登録が完了。基本情報・在留資格・連絡先を入力するだけ。</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-          </svg>
-        </div>
-        <h3>AIチャット相談</h3>
-        <p>特定技能ビザや就職に関する疑問をAIが24時間サポート。母国語で質問OK。</p>
-      </div>
-    </div>
 
-    <!-- Language Support -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">対応言語</h2>
-      <p class="section-desc">あなたの言語で利用できます</p>
-    </div>
+        <table>
+          <tr>
+            <th>項目</th>
+            <th>内容</th>
+          </tr>
+          <tr>
+            <td>目的</td>
+            <td>技能実習生（3年以上滞在）を特定技能へ移行させるための求職者登録</td>
+          </tr>
+          <tr>
+            <td>ターゲット</td>
+            <td>インドネシア、ネパール、ミャンマーの外国人労働者</td>
+          </tr>
+          <tr>
+            <td>対象業種</td>
+            <td>介護（将来的に全業種対応予定）</td>
+          </tr>
+          <tr>
+            <td>本番URL</td>
+            <td><a href="https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app">skilled-worker-jp-ih4hgkgkfa-an.a.run.app</a></td>
+          </tr>
+        </table>
+      </section>
 
-    <div class="lang-grid">
-      <div class="lang-card">
-        <div class="lang-flag">🇯🇵</div>
-        <div class="lang-name">日本語</div>
-        <div class="lang-code">ja</div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-flag">🇬🇧</div>
-        <div class="lang-name">English</div>
-        <div class="lang-code">en</div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-flag">🇮🇩</div>
-        <div class="lang-name">Indonesia</div>
-        <div class="lang-code">id</div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-flag">🇳🇵</div>
-        <div class="lang-name">नेपाली</div>
-        <div class="lang-code">ne</div>
-      </div>
-      <div class="lang-card">
-        <div class="lang-flag">🇲🇲</div>
-        <div class="lang-name">မြန်မာ</div>
-        <div class="lang-code">my</div>
-      </div>
-    </div>
+      <!-- Features -->
+      <section id="features">
+        <h2>主要機能</h2>
 
-    <!-- User Journey SVG -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">利用の流れ</h2>
-      <p class="section-desc">登録から就職までの4ステップ</p>
-    </div>
-
-    <div class="svg-container">
-      <svg class="animated-diagram" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Background circles -->
-        <circle cx="100" cy="100" r="50" fill="#1E293B" stroke="#00C4CC" stroke-width="2">
-          <animate attributeName="stroke-opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="300" cy="100" r="50" fill="#1E293B" stroke="#00C4CC" stroke-width="2">
-          <animate attributeName="stroke-opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
-        </circle>
-        <circle cx="500" cy="100" r="50" fill="#1E293B" stroke="#00C4CC" stroke-width="2">
-          <animate attributeName="stroke-opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" begin="1s"/>
-        </circle>
-        <circle cx="700" cy="100" r="50" fill="#1E293B" stroke="#00C4CC" stroke-width="2">
-          <animate attributeName="stroke-opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" begin="1.5s"/>
-        </circle>
-
-        <!-- Connecting lines -->
-        <line x1="150" y1="100" x2="250" y2="100" stroke="#334155" stroke-width="2" stroke-dasharray="5,5">
-          <animate attributeName="stroke-dashoffset" values="10;0" dur="1s" repeatCount="indefinite"/>
-        </line>
-        <line x1="350" y1="100" x2="450" y2="100" stroke="#334155" stroke-width="2" stroke-dasharray="5,5">
-          <animate attributeName="stroke-dashoffset" values="10;0" dur="1s" repeatCount="indefinite"/>
-        </line>
-        <line x1="550" y1="100" x2="650" y2="100" stroke="#334155" stroke-width="2" stroke-dasharray="5,5">
-          <animate attributeName="stroke-dashoffset" values="10;0" dur="1s" repeatCount="indefinite"/>
-        </line>
-
-        <!-- Icons -->
-        <text x="100" y="108" text-anchor="middle" font-size="28">📝</text>
-        <text x="300" y="108" text-anchor="middle" font-size="28">💬</text>
-        <text x="500" y="108" text-anchor="middle" font-size="28">🔍</text>
-        <text x="700" y="108" text-anchor="middle" font-size="28">🎉</text>
-
-        <!-- Labels -->
-        <text x="100" y="175" text-anchor="middle" fill="#F8FAFC" font-size="14" font-weight="600">登録</text>
-        <text x="300" y="175" text-anchor="middle" fill="#F8FAFC" font-size="14" font-weight="600">面談</text>
-        <text x="500" y="175" text-anchor="middle" fill="#F8FAFC" font-size="14" font-weight="600">紹介</text>
-        <text x="700" y="175" text-anchor="middle" fill="#F8FAFC" font-size="14" font-weight="600">就職</text>
-      </svg>
-    </div>
-
-    <!-- Registration Flow -->
-    <div class="flow-container">
-      <div class="flow-steps">
-        <div class="flow-step">
-          <div class="flow-number">1</div>
-          <div class="flow-content">
-            <h4>無料登録（3分）</h4>
-            <p>氏名・生年月日・性別・国籍などの基本情報を入力します</p>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon">🌍</div>
+            <div class="card-title">多言語対応</div>
+            <div class="card-desc">5言語（日本語・英語・インドネシア語・ネパール語・ビルマ語）に対応</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">📝</div>
+            <div class="card-title">求職者登録</div>
+            <div class="card-desc">3ステップで基本情報・在留資格・連絡先を登録</div>
+          </div>
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <div class="card-title">AIチャット</div>
+            <div class="card-desc">Vertex AI (Gemini)による24時間相談対応</div>
           </div>
         </div>
-        <div class="flow-step">
-          <div class="flow-number">2</div>
-          <div class="flow-content">
-            <h4>在留資格・スキル</h4>
-            <p>在留資格の種類・期限・日本語レベル・希望職種を選択します</p>
+      </section>
+
+      <!-- Languages -->
+      <section id="languages">
+        <h2>対応言語</h2>
+
+        <div class="lang-list">
+          <div class="lang-pill">🇯🇵 日本語 <code>ja</code></div>
+          <div class="lang-pill">🇬🇧 English <code>en</code></div>
+          <div class="lang-pill">🇮🇩 Indonesia <code>id</code></div>
+          <div class="lang-pill">🇳🇵 नेपाली <code>ne</code></div>
+          <div class="lang-pill">🇲🇲 မြန်မာ <code>my</code></div>
+        </div>
+      </section>
+
+      <!-- User Flow -->
+      <section id="user-flow">
+        <h2>利用の流れ</h2>
+        <p>ユーザーは以下の4ステップで登録から就職まで進みます。</p>
+
+        <div class="mermaid-wrapper">
+          <div class="mermaid">
+flowchart LR
+    A[📝 登録] --> B[💬 面談]
+    B --> C[🔍 紹介]
+    C --> D[🎉 就職]
           </div>
         </div>
-        <div class="flow-step">
-          <div class="flow-number">3</div>
-          <div class="flow-content">
-            <h4>連絡先入力</h4>
-            <p>LINE IDなどの連絡先を入力して登録完了。スタッフから連絡をお待ちください</p>
+      </section>
+
+      <!-- Registration -->
+      <section id="registration">
+        <h2>登録ステップ</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>基本情報</h4>
+              <p>氏名・生年月日・性別・国籍を入力</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>在留資格・スキル</h4>
+              <p>在留資格・期限・日本語レベル・希望職種を選択</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>連絡先</h4>
+              <p>LINE ID等の連絡先を入力して完了</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Engineer Section -->
-  <section class="section" id="engineer">
-    <div class="section-header">
-      <div class="section-label">For Engineers</div>
-      <h2 class="section-title">技術仕様</h2>
-      <p class="section-desc">システム構成と実装の詳細</p>
-    </div>
+      <!-- Tech Stack -->
+      <section id="tech-stack">
+        <h2>技術スタック</h2>
 
-    <!-- Tech Stack Table -->
-    <table class="feature-table">
-      <thead>
-        <tr>
-          <th>レイヤー</th>
-          <th>技術</th>
-          <th>バージョン/詳細</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Frontend</td>
-          <td>Next.js (App Router)</td>
-          <td>14.x / React Server Components</td>
-        </tr>
-        <tr>
-          <td>Styling</td>
-          <td>Tailwind CSS</td>
-          <td>3.x / utility-first</td>
-        </tr>
-        <tr>
-          <td>i18n</td>
-          <td>next-intl</td>
-          <td>5言語対応 (ja/en/id/ne/my)</td>
-        </tr>
-        <tr>
-          <td>AI</td>
-          <td>Vertex AI (Gemini)</td>
-          <td>gemini-2.5-flash / asia-northeast1</td>
-        </tr>
-        <tr>
-          <td>Infrastructure</td>
-          <td>GCP Cloud Run</td>
-          <td>Workload Identity認証</td>
-        </tr>
-        <tr>
-          <td>CI/CD</td>
-          <td>Cloud Build</td>
-          <td>GitHub連携自動デプロイ</td>
-        </tr>
-        <tr>
-          <td>Container</td>
-          <td>Artifact Registry</td>
-          <td>Docker イメージ管理</td>
-        </tr>
-      </tbody>
-    </table>
+        <table>
+          <tr>
+            <th>レイヤー</th>
+            <th>技術</th>
+            <th>詳細</th>
+          </tr>
+          <tr>
+            <td>Frontend</td>
+            <td>Next.js 14</td>
+            <td>App Router / React Server Components</td>
+          </tr>
+          <tr>
+            <td>Styling</td>
+            <td>Tailwind CSS</td>
+            <td>utility-first CSS</td>
+          </tr>
+          <tr>
+            <td>i18n</td>
+            <td>next-intl</td>
+            <td>5言語対応</td>
+          </tr>
+          <tr>
+            <td>AI</td>
+            <td>Vertex AI</td>
+            <td>Gemini 2.5 Flash / asia-northeast1</td>
+          </tr>
+          <tr>
+            <td>Infrastructure</td>
+            <td>Cloud Run</td>
+            <td>Workload Identity認証</td>
+          </tr>
+          <tr>
+            <td>CI/CD</td>
+            <td>Cloud Build</td>
+            <td>GitHub連携自動デプロイ</td>
+          </tr>
+          <tr>
+            <td>Container</td>
+            <td>Artifact Registry</td>
+            <td>Dockerイメージ管理</td>
+          </tr>
+        </table>
+      </section>
 
-    <!-- Architecture Diagram -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">システムアーキテクチャ</h2>
-    </div>
+      <!-- Architecture -->
+      <section id="architecture">
+        <h2>システムアーキテクチャ</h2>
 
-    <div class="mermaid-container">
-      <pre class="mermaid">
+        <div class="mermaid-wrapper">
+          <div class="mermaid">
 flowchart TB
-    subgraph Client["🌐 Client"]
-        Browser["Browser<br/>(5 languages)"]
+    subgraph Client
+        Browser[Browser]
     end
 
-    subgraph CloudRun["☁️ Cloud Run"]
-        NextJS["Next.js 14<br/>(App Router)"]
-        API["API Routes<br/>(/api/chat)"]
+    subgraph CloudRun[Cloud Run]
+        NextJS[Next.js 14]
+        API[API Routes]
     end
 
-    subgraph GCP["Google Cloud Platform"]
-        VertexAI["Vertex AI<br/>Gemini 2.5 Flash"]
-        Firestore["Firestore<br/>(予定)"]
+    subgraph GCP[Google Cloud]
+        VertexAI[Vertex AI]
+        Firestore[Firestore]
     end
 
-    subgraph CI["CI/CD"]
-        GitHub["GitHub"]
-        CloudBuild["Cloud Build"]
-        AR["Artifact Registry"]
+    subgraph CICD[CI/CD]
+        GitHub[GitHub]
+        CloudBuild[Cloud Build]
+        AR[Artifact Registry]
     end
 
     Browser --> NextJS
@@ -1020,148 +588,72 @@ flowchart TB
     GitHub --> CloudBuild
     CloudBuild --> AR
     AR --> CloudRun
-
-    style Client fill:#1E293B,stroke:#00C4CC,color:#F8FAFC
-    style CloudRun fill:#1E293B,stroke:#00C4CC,color:#F8FAFC
-    style GCP fill:#1E293B,stroke:#A855F7,color:#F8FAFC
-    style CI fill:#1E293B,stroke:#22C55E,color:#F8FAFC
-      </pre>
-    </div>
-
-    <!-- Architecture Layers -->
-    <div class="arch-grid">
-      <div class="arch-layer">
-        <div class="arch-layer-title">Frontend</div>
-        <div class="arch-items">
-          <div class="arch-item">
-            <div class="arch-item-icon">⚛️</div>
-            <span>Next.js 14 App Router</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">🎨</div>
-            <span>Tailwind CSS</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">🌍</div>
-            <span>next-intl</span>
           </div>
         </div>
-      </div>
-      <div class="arch-layer">
-        <div class="arch-layer-title">Backend</div>
-        <div class="arch-items">
-          <div class="arch-item">
-            <div class="arch-item-icon">🔌</div>
-            <span>API Routes</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">🤖</div>
-            <span>Vertex AI SDK</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">🔐</div>
-            <span>Workload Identity</span>
-          </div>
-        </div>
-      </div>
-      <div class="arch-layer">
-        <div class="arch-layer-title">Infrastructure</div>
-        <div class="arch-items">
-          <div class="arch-item">
-            <div class="arch-item-icon">☁️</div>
-            <span>Cloud Run</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">🔧</div>
-            <span>Cloud Build</span>
-          </div>
-          <div class="arch-item">
-            <div class="arch-item-icon">📦</div>
-            <span>Artifact Registry</span>
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
 
-    <!-- Request Flow -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">リクエストフロー</h2>
-    </div>
+      <!-- Request Flow -->
+      <section id="request-flow">
+        <h2>リクエストフロー</h2>
 
-    <div class="mermaid-container">
-      <pre class="mermaid">
+        <div class="mermaid-wrapper">
+          <div class="mermaid">
 sequenceDiagram
-    autonumber
     participant U as User
     participant N as Next.js
     participant A as API Route
     participant V as Vertex AI
 
     U->>N: Access /{locale}/
-    N->>N: Load translations
-    N->>U: Render LP (SSR)
+    N->>U: Render LP
 
-    U->>N: Open Chat Widget
     U->>A: POST /api/chat
     A->>V: generateContent()
-    V->>A: AI Response
-    A->>U: Stream Response
+    V->>A: Response
+    A->>U: AI Response
 
     U->>N: Navigate /register
-    N->>U: Render Form
     U->>A: POST /api/register
     A->>U: Success
-      </pre>
-    </div>
+          </div>
+        </div>
+      </section>
 
-    <!-- Directory Structure -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">ディレクトリ構造</h2>
-    </div>
+      <!-- Directory -->
+      <section id="directory">
+        <h2>ディレクトリ構造</h2>
 
-    <div class="code-block">
-      <div class="code-header">
-        <span class="code-dot red"></span>
-        <span class="code-dot yellow"></span>
-        <span class="code-dot green"></span>
-        <span class="code-title">project structure</span>
-      </div>
-      <div class="code-content">
-<span class="variable">src/</span>
-├── <span class="function">app/</span>
-│   └── <span class="function">[locale]/</span>           <span class="comment"># 多言語ルーティング</span>
-│       ├── page.tsx          <span class="comment"># LP（トップページ）</span>
-│       ├── register/         <span class="comment"># 登録フォーム</span>
-│       └── layout.tsx        <span class="comment"># 共通レイアウト</span>
-├── <span class="function">components/</span>
-│   ├── ui/                   <span class="comment"># 基本UI部品</span>
-│   ├── layout/               <span class="comment"># Header, Footer</span>
-│   └── chat/                 <span class="comment"># ChatWidget</span>
-├── <span class="function">lib/</span>
-│   └── vertexai.ts           <span class="comment"># AI設定・プロンプト</span>
-└── <span class="function">messages/</span>
-    ├── ja.json               <span class="comment"># 日本語</span>
-    ├── en.json               <span class="comment"># 英語</span>
-    ├── id.json               <span class="comment"># インドネシア語</span>
-    ├── ne.json               <span class="comment"># ネパール語</span>
-    └── my.json               <span class="comment"># ビルマ語</span>
-      </div>
-    </div>
+        <div class="code-block">
+          <div class="code-header">project structure</div>
+          <div class="code-content">src/
+├── app/
+│   └── [locale]/           <span class="comment"># 多言語ルーティング</span>
+│       ├── page.tsx        <span class="comment"># LP</span>
+│       ├── register/       <span class="comment"># 登録フォーム</span>
+│       └── layout.tsx      <span class="comment"># 共通レイアウト</span>
+├── components/
+│   ├── ui/                 <span class="comment"># 基本UI</span>
+│   ├── layout/             <span class="comment"># Header, Footer</span>
+│   └── chat/               <span class="comment"># ChatWidget</span>
+├── lib/
+│   └── vertexai.ts         <span class="comment"># AI設定</span>
+└── messages/
+    ├── ja.json             <span class="comment"># 日本語</span>
+    ├── en.json             <span class="comment"># 英語</span>
+    ├── id.json             <span class="comment"># インドネシア語</span>
+    ├── ne.json             <span class="comment"># ネパール語</span>
+    └── my.json             <span class="comment"># ビルマ語</span></div>
+        </div>
+      </section>
 
-    <!-- API Code Example -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">API実装例</h2>
-    </div>
+      <!-- API -->
+      <section id="api">
+        <h2>API実装</h2>
 
-    <div class="code-block">
-      <div class="code-header">
-        <span class="code-dot red"></span>
-        <span class="code-dot yellow"></span>
-        <span class="code-dot green"></span>
-        <span class="code-title">src/app/api/chat/route.ts</span>
-      </div>
-      <div class="code-content">
-<span class="keyword">import</span> { VertexAI } <span class="keyword">from</span> <span class="string">'@google-cloud/vertexai'</span>;
+        <h3>Chat API</h3>
+        <div class="code-block">
+          <div class="code-header">src/app/api/chat/route.ts</div>
+          <div class="code-content"><span class="keyword">import</span> { VertexAI } <span class="keyword">from</span> <span class="string">'@google-cloud/vertexai'</span>;
 <span class="keyword">import</span> { SYSTEM_PROMPT } <span class="keyword">from</span> <span class="string">'@/lib/vertexai'</span>;
 
 <span class="keyword">const</span> vertexAI = <span class="keyword">new</span> <span class="function">VertexAI</span>({
@@ -1185,151 +677,123 @@ sequenceDiagram
   <span class="keyword">return</span> Response.<span class="function">json</span>({
     response: result.response.<span class="function">text</span>()
   });
-}
-      </div>
-    </div>
+}</div>
+        </div>
 
-    <!-- Environment Variables -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">環境変数</h2>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <span class="code-dot red"></span>
-        <span class="code-dot yellow"></span>
-        <span class="code-dot green"></span>
-        <span class="code-title">.env.local</span>
-      </div>
-      <div class="code-content">
-<span class="comment"># GCP Project</span>
-<span class="variable">GOOGLE_CLOUD_PROJECT</span>=your-project-id
+        <h3>環境変数</h3>
+        <div class="code-block">
+          <div class="code-header">.env.local</div>
+          <div class="code-content"><span class="comment"># GCP Project</span>
+GOOGLE_CLOUD_PROJECT=your-project-id
 
 <span class="comment"># Vertex AI</span>
-<span class="variable">VERTEX_AI_LOCATION</span>=asia-northeast1
+VERTEX_AI_LOCATION=asia-northeast1
 
 <span class="comment"># Local development only</span>
-<span class="variable">GOOGLE_APPLICATION_CREDENTIALS</span>=./service-account.json
-      </div>
-    </div>
+GOOGLE_APPLICATION_CREDENTIALS=./service-account.json</div>
+        </div>
+      </section>
 
-    <!-- Deployment Flow -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">デプロイフロー</h2>
-    </div>
+      <!-- Deploy -->
+      <section id="deploy">
+        <h2>デプロイ</h2>
 
-    <div class="mermaid-container">
-      <pre class="mermaid">
+        <h3>デプロイフロー</h3>
+        <div class="mermaid-wrapper">
+          <div class="mermaid">
 flowchart LR
-    A[git push] --> B[Cloud Build Trigger]
-    B --> C[Build Docker Image]
-    C --> D[Push to Artifact Registry]
-    D --> E[Deploy to Cloud Run]
-    E --> F[Health Check]
-    F --> G[✅ Live]
+    A[git push] --> B[Cloud Build]
+    B --> C[Docker Build]
+    C --> D[Artifact Registry]
+    D --> E[Cloud Run]
+    E --> F[Live]
+          </div>
+        </div>
 
-    style A fill:#1E293B,stroke:#3B82F6
-    style G fill:#1E293B,stroke:#22C55E
-      </pre>
-    </div>
-
-    <!-- Key Commands -->
-    <div class="section-header" style="margin-top: 4rem;">
-      <h2 class="section-title">開発コマンド</h2>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <span class="code-dot red"></span>
-        <span class="code-dot yellow"></span>
-        <span class="code-dot green"></span>
-        <span class="code-title">terminal</span>
-      </div>
-      <div class="code-content">
-<span class="comment"># 開発サーバー起動</span>
-$ <span class="function">npm run dev</span>
+        <h3>開発コマンド</h3>
+        <div class="code-block">
+          <div class="code-header">terminal</div>
+          <div class="code-content"><span class="comment"># 開発サーバー</span>
+npm run dev
 
 <span class="comment"># ビルド</span>
-$ <span class="function">npm run build</span>
+npm run build
 
 <span class="comment"># 型チェック</span>
-$ <span class="function">npm run type-check</span>
+npm run type-check
 
-<span class="comment"># Lint</span>
-$ <span class="function">npm run lint</span>
+<span class="comment"># 本番デプロイ</span>
+git push origin main</div>
+        </div>
+      </section>
 
-<span class="comment"># 本番デプロイ（Cloud Build経由）</span>
-$ <span class="function">git push origin main</span>
-      </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-links">
-      <a href="https://github.com/yyyhhh/skilled-worker-jp" target="_blank">GitHub</a>
-      <a href="https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app" target="_blank">Production Site</a>
-      <a href="https://aozora-cg.com" target="_blank">Aozora Care Group</a>
-    </div>
-    <p class="footer-copy">© 2025 skilled-worker-jp. System Documentation.</p>
-  </footer>
+  <!-- Mermaid -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 
-  <script>
-    // Initialize Mermaid
     mermaid.initialize({
       startOnLoad: true,
-      theme: 'dark',
+      theme: 'base',
       themeVariables: {
-        primaryColor: '#00C4CC',
-        primaryTextColor: '#F8FAFC',
-        primaryBorderColor: '#334155',
-        lineColor: '#334155',
-        secondaryColor: '#1E293B',
-        tertiaryColor: '#0F172A',
-        background: '#1E293B',
-        mainBkg: '#1E293B',
-        nodeBorder: '#00C4CC',
-        clusterBkg: '#1E293B',
-        clusterBorder: '#334155',
-        titleColor: '#F8FAFC',
-        edgeLabelBackground: '#1E293B',
-        actorBkg: '#1E293B',
-        actorBorder: '#00C4CC',
-        actorTextColor: '#F8FAFC',
-        signalColor: '#00C4CC',
-        signalTextColor: '#F8FAFC',
-        noteBkgColor: '#1E293B',
-        noteTextColor: '#F8FAFC',
-        noteBorderColor: '#334155'
+        primaryColor: '#e0f7f8',
+        primaryTextColor: '#1a1a1a',
+        primaryBorderColor: '#00a3a9',
+        lineColor: '#9ca3af',
+        secondaryColor: '#f3f4f6',
+        tertiaryColor: '#fff',
+        background: '#fff',
+        mainBkg: '#e0f7f8',
+        nodeBorder: '#00a3a9',
+        clusterBkg: '#f9fafb',
+        clusterBorder: '#e5e7eb',
+        titleColor: '#1a1a1a',
+        actorBkg: '#e0f7f8',
+        actorBorder: '#00a3a9',
+        actorTextColor: '#1a1a1a',
+        signalColor: '#4b5563',
+        signalTextColor: '#1a1a1a'
       },
       flowchart: {
         curve: 'basis',
-        padding: 20
-      },
-      sequence: {
-        diagramMarginX: 20,
-        diagramMarginY: 20,
-        actorMargin: 80,
-        boxMargin: 10,
-        boxTextMargin: 5,
-        noteMargin: 10,
-        messageMargin: 35
+        padding: 20,
+        htmlLabels: true
       }
     });
+  </script>
 
-    // Tab switching
-    document.querySelectorAll('.nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class from all tabs
-        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-        // Add active class to clicked tab
-        tab.classList.add('active');
+  <!-- Smooth scroll -->
+  <script>
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+        }
+      });
+    });
 
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        // Show target section
-        const targetId = tab.dataset.tab;
-        document.getElementById(targetId).classList.add('active');
+    // Update active nav on scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
       });
     });
   </script>
