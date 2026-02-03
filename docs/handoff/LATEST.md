@@ -1,7 +1,7 @@
 # skilled-worker-jp ハンドオフ
 
-**最終更新**: 2025-02-02
-**フェーズ**: MVP構築完了
+**最終更新**: 2026-02-03
+**フェーズ**: MVP本番稼働中
 
 ---
 
@@ -17,39 +17,67 @@
 
 ## 現在の状態
 
+### デプロイ済み環境
+
+| 環境 | URL |
+|------|-----|
+| 本番サイト | https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app |
+| システム説明ドキュメント | https://yasushihonda-acg.github.io/skilled-worker-jp/system-overview/ |
+| GitHub | https://github.com/yasushihonda-acg/skilled-worker-jp |
+
 ### 実装済み機能
 
 | 機能 | 状態 | 備考 |
 |------|------|------|
-| LP（ヒーロー、特徴、CTA、FAQ） | ✅ | Unsplash画像使用 |
+| LP（リデザイン済み） | ✅ | コンバージョン最適化ベストプラクティス適用 |
 | 5言語対応 | ✅ | ja/en/id/ne/my |
 | 言語切替UI | ✅ | ドロップダウン |
-| 登録フォーム（3ステップ） | ✅ | モック（API未連携） |
-| AIチャットUI | ✅ | モック（AI未連携） |
-| ブランドカラー適用 | ✅ | #00C4CC, #323232 |
+| 登録フォーム（3ステップ） | ✅ | モック（Firestore未連携） |
+| AIチャット | ✅ | Vertex AI Gemini 2.5 Flash連携済み |
+| Cloud Runデプロイ | ✅ | Workload Identity認証 |
+| GitHub Pages | ✅ | システム説明ドキュメント公開 |
 
 ### 未実装（次フェーズ）
 
 | 機能 | 優先度 |
 |------|--------|
-| Vertex AI連携（チャット） | 高 |
-| Google Translate API連携 | 高 |
 | Firestore連携（登録データ保存） | 高 |
-| GCP Cloud Runデプロイ | 高 |
 | 管理画面 | 中 |
+| Google Analytics連携 | 中 |
 
 ---
 
 ## 技術スタック
 
-| レイヤー | 技術 |
-|---------|------|
-| フロントエンド | Next.js 14 (App Router) |
-| スタイリング | Tailwind CSS 4.x |
-| 多言語 | next-intl |
-| インフラ | GCP (Cloud Run) - 未デプロイ |
-| AI | Vertex AI (Gemini) - 未連携 |
-| DB | Firestore - 未連携 |
+| レイヤー | 技術 | 状態 |
+|---------|------|------|
+| フロントエンド | Next.js 14 (App Router) | ✅ |
+| スタイリング | Tailwind CSS | ✅ |
+| 多言語 | next-intl | ✅ |
+| AI | Vertex AI (Gemini 2.5 Flash) | ✅ |
+| インフラ | GCP Cloud Run | ✅ |
+| CI/CD | Cloud Build | ✅ |
+| 認証 | Workload Identity | ✅ |
+| DB | Firestore | 未連携 |
+
+---
+
+## 直近の変更（2026-02-03）
+
+1. **LP リデザイン** - コンバージョン最適化
+   - Hero: バッジ、給与表示、トラスト指標
+   - Social Proof: 統計数値、口コミ
+   - スティッキーCTA（モバイル）
+
+2. **AIチャット改善**
+   - マークダウン→HTML変換
+   - サジェストボタン追加
+   - AI知識強化（あおぞらケアグループ詳細）
+
+3. **システム説明ドキュメント作成**
+   - GitHub Pages公開
+   - 非エンジニア向け（SVGアニメーション、フロー図）
+   - エンジニア向け（Mermaid図、コード例）
 
 ---
 
@@ -57,10 +85,10 @@
 
 | 項目 | 値 |
 |------|-----|
-| リポジトリ | https://github.com/yasushihonda-acg/skilled-worker-jp |
-| ローカル開発 | http://localhost:3001 |
+| GCPプロジェクト | skilled-worker-jp |
+| リージョン | asia-northeast1 |
+| サービスアカウント | skilled-worker-app@skilled-worker-jp.iam.gserviceaccount.com |
 | GitHub | yasushihonda-acg |
-| GCP | hy.unimail.11@gmail.com（暫定） |
 
 ---
 
@@ -69,27 +97,28 @@
 ```
 skilled-worker-jp/
 ├── docs/
-│   ├── prd.md              # 製品要件定義
-│   ├── adr/                # 技術選定記録
-│   └── handoff/            # ハンドオフ
+│   ├── prd.md                    # 製品要件定義
+│   ├── adr/                      # 技術選定記録
+│   ├── handoff/                  # ハンドオフ
+│   └── system-overview/          # GitHub Pages ドキュメント
 ├── src/
-│   ├── app/[locale]/       # ページ
-│   ├── components/         # UIコンポーネント
-│   ├── i18n/               # 多言語設定
-│   └── messages/           # 翻訳ファイル（5言語）
-├── CLAUDE.md               # AI開発コンテキスト
-└── README.md
+│   ├── app/[locale]/             # ページ
+│   ├── components/               # UIコンポーネント
+│   ├── lib/vertexai.ts           # AI設定・プロンプト
+│   └── messages/                 # 翻訳ファイル（5言語）
+├── cloudbuild.yaml               # Cloud Build設定
+├── Dockerfile
+└── CLAUDE.md
 ```
 
 ---
 
 ## 次のアクション候補
 
-1. **GCPプロジェクト設定** - Cloud Run、Firestore有効化
-2. **Firestore連携** - 登録フォームのデータ保存
-3. **Vertex AI連携** - AIチャット機能
-4. **CI/CD設定** - GitHub Actions
-5. **本番デプロイ** - ドメイン設定
+1. **Firestore連携** - 登録フォームのデータ保存
+2. **Google Analytics** - コンバージョン計測
+3. **管理画面** - 登録者一覧、エクスポート
+4. **独自ドメイン設定** - Cloud Runカスタムドメイン
 
 ---
 
@@ -97,15 +126,16 @@ skilled-worker-jp/
 
 ```bash
 cd /Users/yyyhhh/skilled-worker-jp
-npm run dev      # 開発サーバー（ポート3001使用中なら自動で別ポート）
-npm run build    # ビルド
-npm run lint     # Lint
+npm run dev          # 開発サーバー
+npm run build        # ビルド
+npm run type-check   # 型チェック
+git push origin main # 本番デプロイ（Cloud Build自動実行）
 ```
 
 ---
 
 ## 注意事項
 
-- ポート3000は別プロジェクトで使用中のため、3001で起動
 - 画像はUnsplashのフリー画像を使用（本番前に自社写真に差し替え推奨）
 - 翻訳は機械翻訳ベース（本番前にネイティブチェック推奨）
+- Firestoreは未連携のため、登録データは保存されない
