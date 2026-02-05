@@ -63,14 +63,14 @@ npm run type-check  # 型チェック
 | 項目 | 値 | 備考 |
 |------|-----|------|
 | GitHub | yasushihonda-acg | |
-| GCP Account | hy.unimail.11@gmail.com | 暫定 |
-| GCP Project | skilled-worker-jp | 未作成 |
+| GCP Account | yasushi.honda@aozora-cg.com | |
+| GCP Project | skilled-worker-jp-486212 | プロジェクト番号: 935571709754 |
 
 ## 環境変数（.env.local）
 
 ```
 # GCP
-GOOGLE_CLOUD_PROJECT=skilled-worker-jp
+GOOGLE_CLOUD_PROJECT=skilled-worker-jp-486212
 GOOGLE_APPLICATION_CREDENTIALS=
 
 # Vertex AI

@@ -85,9 +85,10 @@
 
 | 項目 | 値 |
 |------|-----|
-| GCPプロジェクト | skilled-worker-jp |
+| GCPプロジェクト | skilled-worker-jp-486212 |
+| GCPアカウント | yasushi.honda@aozora-cg.com |
 | リージョン | asia-northeast1 |
-| サービスアカウント | skilled-worker-app@skilled-worker-jp.iam.gserviceaccount.com |
+| サービスアカウント | skilled-worker-app@skilled-worker-jp-486212.iam.gserviceaccount.com |
 | GitHub | yasushihonda-acg |
 
 ---
