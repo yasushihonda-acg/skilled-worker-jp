@@ -1,6 +1,6 @@
 # skilled-worker-jp ハンドオフ
 
-**最終更新**: 2026-02-03
+**最終更新**: 2026-02-05
 **フェーズ**: MVP本番稼働中
 
 ---
@@ -21,7 +21,7 @@
 
 | 環境 | URL |
 |------|-----|
-| 本番サイト | https://skilled-worker-jp-ih4hgkgkfa-an.a.run.app |
+| 本番サイト | https://skilled-worker-jp-drprlprudq-an.a.run.app |
 | システム説明ドキュメント | https://yasushihonda-acg.github.io/skilled-worker-jp/system-overview/ |
 | GitHub | https://github.com/yasushihonda-acg/skilled-worker-jp |
 
@@ -62,22 +62,22 @@
 
 ---
 
-## 直近の変更（2026-02-03）
+## 直近の変更（2026-02-05）
 
-1. **LP リデザイン** - コンバージョン最適化
+1. **GCPプロジェクト移行**
+   - 旧: hy.unimail.11@gmail.com / skilled-worker-jp
+   - 新: yasushi.honda@aozora-cg.com / skilled-worker-jp-486212
+   - Cloud Build GitHub連携設定済み
+
+2. **LP リデザイン**（2026-02-03）
    - Hero: バッジ、給与表示、トラスト指標
    - Social Proof: 統計数値、口コミ
    - スティッキーCTA（モバイル）
 
-2. **AIチャット改善**
+3. **AIチャット改善**（2026-02-03）
    - マークダウン→HTML変換
    - サジェストボタン追加
    - AI知識強化（あおぞらケアグループ詳細）
-
-3. **システム説明ドキュメント作成**
-   - GitHub Pages公開
-   - 非エンジニア向け（SVGアニメーション、フロー図）
-   - エンジニア向け（Mermaid図、コード例）
 
 ---
 
