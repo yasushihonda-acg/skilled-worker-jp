@@ -1,6 +1,6 @@
 # skilled-worker-jp ハンドオフ
 
-**最終更新**: 2026-02-05
+**最終更新**: 2026-02-09
 **フェーズ**: MVP本番稼働中
 
 ---
@@ -62,22 +62,21 @@
 
 ---
 
-## 直近の変更（2026-02-05）
+## 直近の変更
 
-1. **GCPプロジェクト移行**
+1. **GitHub Pagesリダイレクト＆URL修正**（2026-02-09）
+   - `docs/index.html` 追加（ルート→system-overview/へリダイレクト）
+   - system-overview内の旧Cloud Run URL（ih4hgkgkfa）を新URL（drprlprudq）に更新
+   - gcloud設定のアカウント修正（skilled-worker-jp-new → yasushi.honda@aozora-cg.com）
+
+2. **GCPプロジェクト移行**（2026-02-05）
    - 旧: hy.unimail.11@gmail.com / skilled-worker-jp
    - 新: yasushi.honda@aozora-cg.com / skilled-worker-jp-486212
    - Cloud Build GitHub連携設定済み
 
-2. **LP リデザイン**（2026-02-03）
-   - Hero: バッジ、給与表示、トラスト指標
-   - Social Proof: 統計数値、口コミ
-   - スティッキーCTA（モバイル）
-
-3. **AIチャット改善**（2026-02-03）
-   - マークダウン→HTML変換
-   - サジェストボタン追加
-   - AI知識強化（あおぞらケアグループ詳細）
+3. **LP リデザイン＆AIチャット改善**（2026-02-03）
+   - コンバージョン最適化ベストプラクティス適用
+   - AIチャット: マークダウン→HTML変換、サジェストボタン
 
 ---
 
@@ -98,6 +97,7 @@
 ```
 skilled-worker-jp/
 ├── docs/
+│   ├── index.html                # GitHub Pages ルート（→ system-overview/ リダイレクト）
 │   ├── prd.md                    # 製品要件定義
 │   ├── adr/                      # 技術選定記録
 │   ├── handoff/                  # ハンドオフ
